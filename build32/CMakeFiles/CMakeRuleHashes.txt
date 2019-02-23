@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+597a8d42dcd9c9520c7f33b01eb3d30c CMakeFiles/clean_cotire
+c28d3d7b040dc4993d8e8c4e2cf39f9e CMakeFiles/devilution_pch
+e4e4ef9392a925639498e024d72e31ac cotire/devilution_CXX_prefix.cxx
+b22bf3b360c15613e3efa7d2fc9ffe5b cotire/devilution_CXX_prefix.hxx
+2526f23a3b8aff5a7c6a754c006d5a5e cotire/devilution_CXX_prefix.hxx.gch
+0aa648bd5c8155639a2392277cad9e61 cotire/devilution_CXX_unity.cxx
+83a6e11d64254c1dd7f05aeef6c4e5e1 cotire/devilution_C_prefix.c
+b8e487b4c27524a3633f141c53a90c33 cotire/devilution_C_prefix.h
+097e3dcadc5faff4ee3da9761e482cc6 cotire/devilution_C_prefix.h.gch
+6b3350f55836ba4ba3eeb0370868b14a cotire/devilution_C_unity.c

@@ -2,6 +2,12 @@
 #ifndef __DX_H__
 #define __DX_H__
 
+
+
+extern int WorkingHeight;
+extern int WorkingWidth;
+
+
 extern IDirectDraw *lpDDInterface;
 extern IDirectDrawPalette *lpDDPalette; // idb
 extern Screen *gpBuffer;

@@ -3,7 +3,16 @@
 #include "../types.h"
 
 int light_table_index; // weak
+#ifdef RESOLUTION_640x480 
 int screen_y_times_768[1024];
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+int screen_y_times_768[4096];
+
+#endif
+
 unsigned int sgdwCursWdtOld; // idb
 int sgdwCursX;               // idb
 int sgdwCursY;               // idb
@@ -495,7 +504,21 @@ void __fastcall DrawGame(int x, int y)
 	ya = y - 1;
 	a5 = 10;
 	v4 = ScrollInfo._syoff + 175;
+
+
+#ifdef RESOLUTION_640x480 
 	scr_pix_width = 640;
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	scr_pix_width = 1366;
+
+#endif
+
+
+
+
 	scr_pix_height = 352;
 	dword_5C2FFC = 11;
 	v11 = 8;
@@ -666,26 +689,92 @@ void __fastcall scrollrt_draw_lower(int x, int y, int sx, int sy, int a5, int so
 					drawLowerScreen((unsigned char *)&v13[sx + 32]);
 				v15 = v8[3];
 				arch_draw_type = 0;
-				v16 = (unsigned char *)(v14 - 24576);
+				#ifdef RESOLUTION_640x480 
+							v16 = (unsigned char *)(v14 - 24576);
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+					v16 = (unsigned char *)(v14 -  WorkingWidth * 32);
+
+				#endif
+
+
+
 				level_cel_block = v15;
 				if (v15)
 					drawLowerScreen(v16);
-				v17 = v16 - 24576;
+
+				#ifdef RESOLUTION_640x480 
+						v17 = v16 - 24576;
+				#endif
+				#ifdef RESOLUTION_1366x768 
+					v17 = v16 -  WorkingWidth * 32;
+				#endif
+
+
+
 				level_cel_block = v8[5];
 				if (level_cel_block)
 					drawLowerScreen(v17);
-				v18 = v17 - 24576;
+					#ifdef RESOLUTION_640x480 
+					v18 = v17 - 24576;
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					v18 = v17 - WorkingWidth * 32;;
+
+					#endif
+
+
+
+				
+
+
+
+
 				level_cel_block = v8[7];
 				if (level_cel_block)
 					drawLowerScreen(v18);
-				v19 = v18 - 24576;
+				#ifdef RESOLUTION_640x480 
+					v19 = v18 - 24576;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+							v19 = v18 - WorkingWidth * 32;
+
+				#endif
+
+
+
+
+
 				level_cel_block = v8[9];
 				if (level_cel_block)
 					drawLowerScreen(v19);
 				v20 = v8[11];
 				level_cel_block = v8[11];
 				if (v20 && leveltype == DTYPE_HELL)
+
+				#ifdef RESOLUTION_640x480 
 					drawLowerScreen(v19 - 24576);
+
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+					drawLowerScreen(v19 - WorkingWidth * 32);
+
+
+
+				#endif
+
+
+
+
+
 				v21 = sy;
 				scrollrt_draw_clipped_dungeon((char *)gpBuffer + screen_y_times_768[sy] + sx, sxa, sya, sx, sy, 0);
 				goto LABEL_21;
@@ -735,7 +824,18 @@ LABEL_23:
 					arch_draw_type = 0;
 					v31 = 2;
 					for (i = 2; i < dword_5A5594; i += 2) {
-						v29 -= 24576;
+						#ifdef RESOLUTION_640x480 
+								v29 -= 24576;
+						#endif
+
+						#ifdef RESOLUTION_1366x768 
+							v29 -= WorkingWidth * 32;
+						#endif
+
+
+
+
+
 						level_cel_block = v8[v31];
 						if (level_cel_block)
 							drawLowerScreen(v29);
@@ -779,19 +879,71 @@ LABEL_23:
 				drawLowerScreen(v39);
 			v40 = v8[2];
 			arch_draw_type = 0;
+		#ifdef RESOLUTION_640x480 
 			v41 = v39 - 24576;
+
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+			v41 = v39 - WorkingWidth * 32;
+
+		#endif
+
+
+
+
+
+
 			level_cel_block = v40;
 			if (v40)
-				drawLowerScreen(v41);
+			#ifdef RESOLUTION_640x480 
 			v42 = v41 - 24576;
+
+			#endif
+
+			#ifdef RESOLUTION_1366x768 
+				v42 = v41 - WorkingWidth * 32;
+			#endif
+
+
+
+
+				drawLowerScreen(v41);
 			level_cel_block = v8[4];
 			if (level_cel_block)
 				drawLowerScreen(v42);
-			v43 = v42 - 24576;
+#ifdef RESOLUTION_640x480 
+v43 = v42 - 24576;
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+
+v43 = v42 - WorkingWidth * 32;
+
+
+#endif
+
+
+
+			
 			level_cel_block = v8[6];
 			if (level_cel_block)
 				drawLowerScreen(v43);
-			v44 = v43 - 24576;
+			#ifdef RESOLUTION_640x480 
+						v44 = v43 - 24576;
+
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+			v44 = v43 - WorkingWidth * 32;
+
+#endif
+
+
+
+
 			level_cel_block = v8[8];
 			if (level_cel_block)
 				drawLowerScreen(v44);
@@ -799,7 +951,20 @@ LABEL_23:
 			level_cel_block = v8[10];
 			if (v45) {
 				if (leveltype == DTYPE_HELL)
+
+				#ifdef RESOLUTION_640x480 
 					drawLowerScreen(v44 - 24576);
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+					drawLowerScreen(v44 - WorkingWidth * 32);
+
+				#endif
+
+
+
+
 			}
 			scrollrt_draw_clipped_dungeon((char *)gpBuffer + *v51 + sx, sxa, sya, sx, sy, 0);
 		} else {
@@ -934,7 +1099,16 @@ void __fastcall scrollrt_draw_clipped_dungeon(char *a1, int sx, int sy, int a4, 
 				v22 = v21->_peflag;
 				if (v22) {
 					if (v22 == 2)
+					#ifdef RESOLUTION_640x480 
 						scrollrt_draw_clipped_e_flag(dst_buf - 12384, a1a - 2, sy + 1, a4 - 96, a5 - 16);
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+						scrollrt_draw_clipped_e_flag(dst_buf - (WorkingWidth * 16 + 96), a1a - 2, sy + 1, a4 - 96, a5 - 16);
+
+					#endif
+
 					scrollrt_draw_clipped_e_flag(dst_buf - 64, a1a - 1, sy + 1, a4 - 64, a5);
 				}
 			}
@@ -982,7 +1156,22 @@ void __fastcall scrollrt_draw_clipped_dungeon(char *a1, int sx, int sy, int a4, 
 				v30 = v29->_peflag;
 				if (v30) {
 					if (v30 == 2)
-						scrollrt_draw_clipped_e_flag(dst_buf - 12384, a1a - 2, sy + 1, a4 - 96, a5 - 16);
+
+
+					#ifdef RESOLUTION_640x480 
+							scrollrt_draw_clipped_e_flag(dst_buf - 12384, a1a - 2, sy + 1, a4 - 96, a5 - 16);
+
+
+					#endif	
+					
+					#ifdef RESOLUTION_1366x768 
+							scrollrt_draw_clipped_e_flag(dst_buf - (WorkingWidth * 16 + 96), a1a - 2, sy + 1, a4 - 96, a5 - 16);
+
+
+					#endif
+
+
+
 					scrollrt_draw_clipped_e_flag(dst_buf - 64, a1a - 1, sy + 1, a4 - 64, a5);
 				}
 			}
@@ -1204,7 +1393,18 @@ void __fastcall scrollrt_draw_clipped_e_flag(char *buffer, int x, int y, int a4,
 	pbDst = a1;
 	v16 = 2;
 	for (i = 2; i < dword_5A5594; i += 2) {
+		#ifdef RESOLUTION_640x480 
 		pbDst -= 24576;
+
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+		pbDst -= WorkingWidth * 32;
+		#endif
+
+
+
+
 		level_cel_block = v13[v16];
 		if (level_cel_block)
 			drawLowerScreen(pbDst);
@@ -1271,7 +1471,17 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 			if (v10) {
 				a6a = 0;
 				cel_transparency_active = (unsigned char)(nTransTable[v10] & TransList[dung_map[0][v9]]);
-				a1a = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - 24544;
+				#ifdef RESOLUTION_640x480 
+								a1a = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - 24544;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+				a1a = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - (WorkingWidth * 31 + 736);
+
+				#endif
+
+
 				if ((dword_5A5594 >> 1) - 1 > 0) {
 					v24 = (unsigned short *)(v29 + 6);
 					do {
@@ -1281,22 +1491,36 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 							if (v11)
 								drawLowerScreen(a1a);
 						}
-						a1a -= 24576;
+						//WorkingWidth * 32
+					#ifdef RESOLUTION_640x480 
+					a1a -= 24576;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					a1a -= WorkingWidth * 32;
+					#endif
+
+
+
+
+						
 						++a6a;
 						v24 += 2;
 					} while (a6a < (dword_5A5594 >> 1) - 1);
 				}
 				v12 = 2 * a6 + 2;
 				if (v12 < 8)
+				#ifdef RESOLUTION_640x480 
 					scrollrt_draw_clipped_dungeon_2(
-					    (char *)gpBuffer + screen_y_times_768[sy] - 12288 * v12 + v8,
-					    xa,
-					    v7,
-					    a6,
-					    2 * a6 + 2,
-					    v8,
-					    sy,
-					    0);
+					    (char *)gpBuffer + screen_y_times_768[sy] - 12288 * v12 + v8, xa, v7,   a6,  2 * a6 + 2,  v8,   sy,    0);
+				#endif 
+				#ifdef RESOLUTION_1366x768 
+				scrollrt_draw_clipped_dungeon_2(
+					    (char *)gpBuffer + screen_y_times_768[sy] -  WorkingWidth*16 * v12 + v8, xa, v7,   a6,  2 * a6 + 2,  v8,   sy,    0);
+
+				#endif
+
+
 			}
 		}
 		++xa;
@@ -1322,7 +1546,20 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 				if (v15) {
 					a6b = 0;
 					cel_transparency_active = (unsigned char)(nTransTable[v15] & TransList[dung_map[0][v14]]);
+				#ifdef RESOLUTION_640x480 
 					v16 = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - 24576;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+					v16 = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - WorkingWidth * 32;
+
+				#endif
+
+
+
+
+
 					if ((dword_5A5594 >> 1) - 1 > 0) {
 						a5a = (unsigned short *)(v29 + 6);
 						do {
@@ -1338,7 +1575,18 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 							}
 							++a6b;
 							a5a += 2;
+							#ifdef RESOLUTION_640x480 
 							v16 -= 24576;
+							#endif
+
+							#ifdef RESOLUTION_1366x768 
+							v16 -= WorkingWidth * 32;
+							#endif
+
+
+
+
+							
 						} while (a6b < (dword_5A5594 >> 1) - 1);
 					}
 					if (2 * a6 + 2 < 8)
@@ -1372,7 +1620,18 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 			if (v20) {
 				a6c = 0;
 				cel_transparency_active = (unsigned char)(nTransTable[v20] & TransList[dung_map[0][v19]]);
+				#ifdef RESOLUTION_640x480 
 				a1b = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - 24576;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+				a1b = (unsigned char *)gpBuffer + screen_y_times_768[sy] + v8 - WorkingWidth * 32;
+
+				#endif
+
+
+
 				if ((dword_5A5594 >> 1) - 1 > 0) {
 					a5b = (unsigned short *)(v29 + 4);
 					do {
@@ -1382,22 +1641,36 @@ void __fastcall scrollrt_draw_lower_2(int x, int y, int sx, int sy, int a5, int 
 							if (v21)
 								drawLowerScreen(a1b);
 						}
-						a1b -= 24576;
+						#ifdef RESOLUTION_640x480 
+							a1b -= 24576;
+						#endif
+
+						#ifdef RESOLUTION_1366x768 
+							a1b -= WorkingWidth * 32;
+						#endif
+
+
+
+
+
 						++a6c;
 						a5b += 2;
 					} while (a6c < (dword_5A5594 >> 1) - 1);
 				}
 				v22 = 2 * a6 + 2;
 				if (v22 < 8)
+				#ifdef RESOLUTION_640x480 
 					scrollrt_draw_clipped_dungeon_2(
-					    (char *)gpBuffer + screen_y_times_768[sy] - 12288 * v22 + v8,
-					    xa,
-					    v7,
-					    a6,
-					    2 * a6 + 2,
-					    v8,
-					    sy,
-					    0);
+					    (char *)gpBuffer + screen_y_times_768[sy] - 12288 * v22 + v8, xa,v7,a6,2 * a6 + 2,v8, sy, 0);
+				#endif 
+
+				#ifdef RESOLUTION_1366x768 
+						scrollrt_draw_clipped_dungeon_2(
+					    (char *)gpBuffer + screen_y_times_768[sy] - WorkingWidth*16 * v22 + v8, xa,v7,a6,2 * a6 + 2,v8, sy, 0);
+
+				#endif
+
+
 			}
 		}
 	}
@@ -1533,7 +1806,20 @@ void __fastcall scrollrt_draw_clipped_dungeon_2(char *buffer, int x, int y, int 
 				v25 = v24->_peflag;
 				if (v25) {
 					if (v25 == 2)
-						scrollrt_draw_clipped_e_flag_2(dst_buf - 12384, a1 - 2, y + 1, a4, a5, v13 - 96, sy - 16);
+					#ifdef RESOLUTION_640x480 
+							scrollrt_draw_clipped_e_flag_2(dst_buf - 12384, a1 - 2, y + 1, a4, a5, v13 - 96, sy - 16);
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+						scrollrt_draw_clipped_e_flag_2(dst_buf - (WorkingWidth * 16 + 96), a1 - 2, y + 1, a4, a5, v13 - 96, sy - 16);
+
+					#endif
+
+
+
+
+
 					scrollrt_draw_clipped_e_flag_2(dst_buf - 64, a1 - 1, y + 1, a4, a5, v13 - 64, sy);
 				}
 			}
@@ -1582,7 +1868,21 @@ void __fastcall scrollrt_draw_clipped_dungeon_2(char *buffer, int x, int y, int 
 				v33 = v32->_peflag;
 				if (v33) {
 					if (v33 == 2)
+					#ifdef RESOLUTION_640x480 
 						scrollrt_draw_clipped_e_flag_2(dst_buf - 12384, a1 - 2, y + 1, a4, a5, v13 - 96, sy - 16);
+
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768
+						scrollrt_draw_clipped_e_flag_2(dst_buf - (WorkingWidth * 16 + 96), a1 - 2, y + 1, a4, a5, v13 - 96, sy - 16);
+
+
+					#endif
+
+
+
+
 					scrollrt_draw_clipped_e_flag_2(dst_buf - 64, a1 - 1, y + 1, a4, a5, v13 - 64, sy);
 				}
 			}
@@ -1682,7 +1982,20 @@ void __fastcall scrollrt_draw_clipped_e_flag_2(char *buffer, int x, int y, int a
 	v9 = dTransVal[0][v7];
 	v10 = dung_map[0][v7];
 	level_piece_id = v8;
-	v11 = (unsigned char *)&a1[24576 * a4];
+	#ifdef RESOLUTION_640x480 
+		v11 = (unsigned char *)&a1[24576 * a4];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	v11 = (unsigned char *)&a1[WorkingWidth * 32 * a4];
+#endif
+
+
+
+
+
+
+
 	v12 = (unsigned char)(nTransTable[v8] & TransList[v10]);
 	light_table_index = v9;
 	cel_transparency_active = v12;
@@ -1700,7 +2013,15 @@ void __fastcall scrollrt_draw_clipped_e_flag_2(char *buffer, int x, int y, int a
 	}
 	if (a4 == 1) {
 	LABEL_10:
+	#ifdef RESOLUTION_640x480 
 		v11 -= 24576;
+	#endif
+
+	#ifdef RESOLUTION_1366x768 
+	v11 -= WorkingWidth * 32;
+	#endif
+
+		
 		level_cel_block = v13[4];
 		if (level_cel_block)
 			drawLowerScreen(v11);
@@ -1716,6 +2037,10 @@ void __fastcall scrollrt_draw_clipped_e_flag_2(char *buffer, int x, int y, int a
 		goto LABEL_18;
 	}
 LABEL_14:
+
+
+
+
 	v11 -= 24576;
 	level_cel_block = v13[6];
 	if (level_cel_block)
@@ -1814,14 +2139,41 @@ void __fastcall scrollrt_draw_upper(int x, int y, int sx, int sy, int a5, int a6
 						arch_draw_type = 0;
 					}
 				}
-				v15 = (unsigned char *)(v13 - 24576);
+
+
+
+
+				#ifdef RESOLUTION_640x480 
+								v15 = (unsigned char *)(v13 - 24576);
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+				v15 = (unsigned char *)(v13 - WorkingWidth * 32);
+				#endif
+
+
+
+
 				if (a6 >= 1) {
 					v16 = v9[3];
 					level_cel_block = v9[3];
 					if (v16)
 						drawUpperScreen(v15);
 				}
-				v17 = v15 - 24576;
+				#ifdef RESOLUTION_640x480 
+								v17 = v15 - 24576;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+				v17 = v15 - WorkingWidth * 32;
+
+				#endif
+
+
+
+
+
 				if (a6 >= 2) {
 					v18 = v9[5];
 					level_cel_block = v9[5];
@@ -1832,7 +2184,17 @@ void __fastcall scrollrt_draw_upper(int x, int y, int sx, int sy, int a5, int a6
 					v19 = v9[7];
 					level_cel_block = v9[7];
 					if (v19)
-						drawUpperScreen(v17 - 24576);
+
+					#ifdef RESOLUTION_640x480 
+											drawUpperScreen(v17 - 24576);
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+						drawUpperScreen(v17 - WorkingWidth * 32);
+					#endif
+
+
+
 				}
 				v7 = ya;
 				scrollrt_draw_dungeon((char *)gpBuffer + screen_y_times_768[sy] + sx, xa, ya, a6, a5a, sx, sy, 0);
@@ -1875,7 +2237,17 @@ void __fastcall scrollrt_draw_upper(int x, int y, int sx, int sy, int a5, int a6
 						drawUpperScreen(v26 + 32);
 					arch_draw_type = 0;
 					for (i = 1; i < (dword_5A5594 >> 1) - 1; ++i) {
+						#ifdef RESOLUTION_640x480 
 						v26 -= 24576;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+						v26 -= WorkingWidth * 32;
+#endif
+
+
+
+						
 						if (a6 >= i) {
 							v28 = v9[2 * i];
 							level_cel_block = v9[2 * i];
@@ -1920,14 +2292,39 @@ void __fastcall scrollrt_draw_upper(int x, int y, int sx, int sy, int a5, int a6
 					drawUpperScreen(v33);
 			}
 			arch_draw_type = 0;
-			v35 = v33 - 24576;
+
+			#ifdef RESOLUTION_640x480 
+							v35 = v33 - 24576;
+
+			#endif
+
+			#ifdef RESOLUTION_1366x768 
+							v35 = v33 - WorkingWidth * 32;
+
+			#endif
+
+
+
+
+
 			if (a6 >= 1) {
 				v36 = v9[2];
 				level_cel_block = v9[2];
 				if (v36)
 					drawUpperScreen(v35);
 			}
-			v37 = v35 - 24576;
+			#ifdef RESOLUTION_640x480 
+						v37 = v35 - 24576;
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+					v37 = v35 - WorkingWidth * 32;
+
+
+#endif
+
+
 			if (a6 >= 2) {
 				v38 = v9[4];
 				level_cel_block = v9[4];
@@ -1938,7 +2335,21 @@ void __fastcall scrollrt_draw_upper(int x, int y, int sx, int sy, int a5, int a6
 				v39 = v9[6];
 				level_cel_block = v9[6];
 				if (v39)
-					drawUpperScreen(v37 - 24576);
+					#ifdef RESOLUTION_640x480 
+										drawUpperScreen(v37 - 24576);
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					drawUpperScreen(v37 - WorkingWidth * 32);
+
+					#endif
+
+
+
+
+
+
 			}
 			scrollrt_draw_dungeon((char *)gpBuffer + screen_y_times_768[sy] + sx, xa, ya, a6, a5a, sx, sy, 0);
 		} else {
@@ -2073,7 +2484,21 @@ void __fastcall scrollrt_draw_dungeon(char *buffer, int x, int y, int a4, int a5
 				v24 = v23->_peflag;
 				if (v24) {
 					if (v24 == 2)
+
+					#ifdef RESOLUTION_640x480 
 						scrollrt_draw_e_flag(dst_buf - 12384, xa - 2, y + 1, a4, a5, sx - 96, sy - 16);
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+						scrollrt_draw_e_flag(dst_buf - (WorkingWidth * 16 + 96), xa - 2, y + 1, a4, a5, sx - 96, sy - 16);
+
+
+					#endif
+
+
+
+
 					scrollrt_draw_e_flag(dst_buf - 64, xa - 1, y + 1, a4, a5, sx - 64, sy);
 				}
 			}
@@ -2121,7 +2546,24 @@ void __fastcall scrollrt_draw_dungeon(char *buffer, int x, int y, int a4, int a5
 				v32 = v31->_peflag;
 				if (v32) {
 					if (v32 == 2)
+
+
+					#ifdef RESOLUTION_640x480 
 						scrollrt_draw_e_flag(dst_buf - 12384, xa - 2, y + 1, a4, a5, sx - 96, sy - 16);
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+						scrollrt_draw_e_flag(dst_buf - (WorkingWidth * 16 + 96), xa - 2, y + 1, a4, a5, sx - 96, sy - 16);
+
+
+					#endif
+
+
+
+
+
+
 					scrollrt_draw_e_flag(dst_buf - 64, xa - 1, y + 1, a4, a5, sx - 64, sy);
 				}
 			}
@@ -2351,7 +2793,22 @@ void __fastcall scrollrt_draw_e_flag(char *buffer, int x, int y, int a4, int a5,
 		drawUpperScreen(a1 + 32);
 	arch_draw_type = 0;
 	for (i = 1; i < (dword_5A5594 >> 1) - 1; ++i) {
-		v25 -= 24576;
+
+			#ifdef RESOLUTION_640x480 
+					v25 -= 24576;
+
+			#endif
+
+			#ifdef RESOLUTION_1366x768 
+				v25 -= WorkingWidth * 32;
+
+
+			#endif
+
+
+
+
+
 		if (a4 >= i) {
 			v20 = v17[2 * i];
 			level_cel_block = v17[2 * i];
@@ -2532,14 +2989,35 @@ LABEL_24:
 
 void __cdecl ClearScreenBuffer()
 {
+
+
+	j_unlock_buf_priv(3);
+
+
+#ifdef RESOLUTION_640x480 
 	int i; // edx
 
 	j_lock_buf_priv(3);
 
 	for (i = 0; i < 480; i++)
 		memset(gpBuffer->row[i].pixels, 0, 640);
+#endif
 
-	j_unlock_buf_priv(3);
+#ifdef RESOLUTION_1366x768 
+	int i; // edx
+
+	j_lock_buf_priv(3);
+
+	for (i = 0; i < 768; i++)
+		memset(gpBuffer->row[i].pixels, 0, 1366);
+
+#endif
+
+
+
+
+
+
 }
 
 #ifdef _DEBUG
@@ -2795,7 +3273,17 @@ void __fastcall DrawMain(int dwHgt, int draw_desc, int draw_hp, int draw_mana, i
 				return;
 #endif
 			ResetPal();
+			#ifdef RESOLUTION_640x480 
+
 			a4 = 480;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+
+			a4 = 768;
+#endif
+
+
 		}
 		if (lpDDSBackBuf == NULL) {
 			v6 = 1;
@@ -2819,7 +3307,18 @@ void __fastcall DrawMain(int dwHgt, int draw_desc, int draw_hp, int draw_mana, i
 					if (v6 && v8 == E_FAIL) {
 						v6 = 0;
 						dx_reinit();
-						a4 = 480;
+						#ifdef RESOLUTION_640x480 
+a4 = 480;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+a4 = 768;
+
+#endif
+
+
+
+						
 						goto LABEL_8;
 					}
 				LABEL_17:
@@ -2831,7 +3330,9 @@ void __fastcall DrawMain(int dwHgt, int draw_desc, int draw_hp, int draw_mana, i
 				}
 			}
 		}
-		if (a4 > 0)
+		
+			#ifdef RESOLUTION_640x480 
+			if (a4 > 0)
 			DoBlitScreen(0, 0, 640, a4);
 		if (a4 < 480) {
 			if (draw_sbar)
@@ -2857,6 +3358,44 @@ void __fastcall DrawMain(int dwHgt, int draw_desc, int draw_hp, int draw_mana, i
 			if (sgdwCursWdt)
 				DoBlitScreen(sgdwCursX, sgdwCursY, sgdwCursWdt, sgdwCursHgt);
 		}
+
+			#endif
+
+			#ifdef RESOLUTION_1366x768 
+			if (a4 > 0)
+			DoBlitScreen(0, 0, 1366, a4);
+			if (a4 < 768) {
+			if (draw_sbar)
+				DoBlitScreen(204, 357, 232, 28);
+			if (draw_desc)
+				DoBlitScreen(176, 398, 288, 60);
+			if (draw_mana) {
+				DoBlitScreen(460, 352, 88, 72);
+				DoBlitScreen(564, 416, 56, 56);
+			}
+			if (draw_hp)
+				DoBlitScreen(96, 352, 88, 72);
+			if (draw_btn) {
+				DoBlitScreen(8, 357, 72, 119);
+				DoBlitScreen(556, 357, 72, 48);
+				if ((unsigned char)gbMaxPlayers > 1u) {
+					DoBlitScreen(84, 443, 36, 32);
+					DoBlitScreen(524, 443, 36, 32);
+				}
+			}
+			if (sgdwCursWdtOld)
+				DoBlitScreen(sgdwCursXOld, sgdwCursYOld, sgdwCursWdtOld, sgdwCursHgtOld);
+			if (sgdwCursWdt)
+				DoBlitScreen(sgdwCursX, sgdwCursY, sgdwCursWdt, sgdwCursHgt);
+		}
+			#endif
+
+
+
+
+
+
+
 		if (lpDDSBackBuf == NULL) {
 #ifdef __cplusplus
 			v9 = lpDDSPrimary->Unlock(NULL);
@@ -2956,8 +3495,9 @@ void __fastcall DoBlitScreen(int dwX, int dwY, int dwWdt, int dwHgt)
 			return;
 		}
 	} else {
-		v14 = 768 * dwY + dwX + 0x1E040;
-		v17 = DDS_desc.lPitch - dwWdt;
+		#ifdef RESOLUTION_640x480 
+			v14 = 768 * dwY + dwX + 0x1E040;
+				v17 = DDS_desc.lPitch - dwWdt;
 		v15 = dwX + dwY * DDS_desc.lPitch;
 		v6 = 768 - dwWdt;
 		error_codea = (unsigned int)dwWdt >> 2;
@@ -2973,6 +3513,31 @@ void __fastcall DoBlitScreen(int dwX, int dwY, int dwWdt, int dwHgt)
 			--v9;
 		} while (v9);
 		j_unlock_buf_priv(6);
+
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+				v14 = 1366 * dwY + dwX + sizeof(Screen);
+					v17 = DDS_desc.lPitch - dwWdt;
+		v15 = dwX + dwY * DDS_desc.lPitch;
+		v6 = 1366 - dwWdt;
+		error_codea = (unsigned int)dwWdt >> 2;
+		v16 = v6;
+		j_lock_buf_priv(6);
+		v7 = (char *)gpBuffer + v14;
+		v8 = (char *)DDS_desc.lpSurface + v15;
+		v9 = dwHgt;
+		do {
+			qmemcpy(v8, v7, 4 * error_codea);
+			v7 += 4 * error_codea + v16;
+			v8 += 4 * error_codea + v17;
+			--v9;
+		} while (v9);
+		j_unlock_buf_priv(6);
+		#endif
+
+		
+	
 	}
 }
 
@@ -2990,7 +3555,18 @@ void __cdecl DrawAndBlit()
 			drawsbarflag = 1;
 			ddsdesc = 0;
 			ctrlPan = 1;
-			dwHgt = 480;
+
+#ifdef RESOLUTION_640x480 
+dwHgt = 480;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dwHgt = 768;
+#endif
+
+
+
+			
 		} else {
 			if (drawpanflag != 1)
 				return;
@@ -3016,7 +3592,17 @@ void __cdecl DrawAndBlit()
 			DrawInvBelt();
 		if (talkflag) {
 			DrawTalkPan();
-			dwHgt = 480;
+			#ifdef RESOLUTION_640x480 
+dwHgt = 480;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dwHgt = 768;
+#endif
+
+
+
+			
 		}
 		scrollrt_draw_cursor_item();
 		j_unlock_buf_priv(0);

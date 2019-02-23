@@ -187,6 +187,7 @@ add_definitions(
     -DMINIWIN
     # Skip fades and other fluff
     -DFASTER
+    -DRESOLUTION_1366x768
 )
 
 # Ignore serious warnings due to "quality" of decompiled code

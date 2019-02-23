@@ -62,7 +62,17 @@ void __fastcall DrawProgress(int screen_x, int screen_y, int progress_id)
 	v4 = 22;
 	do {
 		*v3 = progress_bar_colours[progress_id];
-		v3 += 768;
+		#ifdef RESOLUTION_640x480 
+	v3 += 768;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	v3 += WorkingWidth;
+#endif
+
+
+
+	
 		--v4;
 	} while (v4);
 }

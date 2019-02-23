@@ -3,7 +3,14 @@
 #define __SCROLLRT_H__
 
 extern int light_table_index; // weak
+#ifdef RESOLUTION_640x480  
 extern int screen_y_times_768[1024];
+#endif
+#ifdef RESOLUTION_1366x768  
+extern int screen_y_times_768[4096];
+#endif
+
+
 extern unsigned char *gpBufEnd; // weak
 extern DWORD level_cel_block;   // weak
 extern char arch_draw_type;     // weak

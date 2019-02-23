@@ -94,6 +94,13 @@ void __cdecl doom_draw()
 			doom_load_graphics();
 		}
 	}
-
+#ifdef RESOLUTION_640x480 
 	CelDecodeOnly(64, 511, pDoomCel, 1, 640);
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	CelDecodeOnly(64, 511, pDoomCel, 1, 1366);
+
+#endif
 }

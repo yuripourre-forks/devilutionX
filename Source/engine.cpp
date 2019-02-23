@@ -1200,17 +1200,42 @@ void __fastcall ENG_set_pixel(int screen_x, int screen_y, UCHAR pixel)
 {
 	UCHAR *v3; // edi
 
+
+
+
+	#ifdef RESOLUTION_640x480 
 	if (screen_y >= 0 && screen_y < 640 && screen_x >= 64 && screen_x < 704) {
 		v3 = (UCHAR *)gpBuffer + screen_y_times_768[screen_y] + screen_x;
 		if (v3 < gpBufEnd)
 			*v3 = pixel;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	if (screen_y >= 0 && screen_y < 1366 && screen_x >= 64 && screen_x < 704) {
+		v3 = (UCHAR *)gpBuffer + screen_y_times_768[screen_y] + screen_x;
+		if (v3 < gpBufEnd)
+			*v3 = pixel;
+#endif
+
+
+
+
+
+
+
+
+
+
 	}
 }
 // 69CF0C: using guessed type int gpBufEnd;
 
 void __fastcall engine_draw_pixel(int x, int y)
 {
-	_BYTE *v2; // eax
+
+
+	#ifdef RESOLUTION_640x480 
+		_BYTE *v2; // eax
 
 	if (dword_52B970) {
 		if (!dword_52B99C || x >= 0 && x < 640 && y >= 64 && y < 704) {
@@ -1224,6 +1249,37 @@ void __fastcall engine_draw_pixel(int x, int y)
 			*v2 = gbPixelCol;
 		return;
 	}
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	_BYTE *v2; // eax
+
+	if (dword_52B970) {
+		if (!dword_52B99C || x >= 0 && x < 640 && y >= 64 && y < 704) {
+			v2 = (unsigned char *)gpBuffer + screen_y_times_768[x] + y;
+			goto LABEL_14;
+		}
+	} else if (!dword_52B99C || y >= 0 && y < 1366 && x >= 64 && x < 704) {
+		v2 = (unsigned char *)gpBuffer + screen_y_times_768[y] + x;
+	LABEL_14:
+		if (v2 < gpBufEnd)
+			*v2 = gbPixelCol;
+		return;
+	}
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
 }
 // 52B96C: using guessed type char gbPixelCol;
 // 52B970: using guessed type int dword_52B970;

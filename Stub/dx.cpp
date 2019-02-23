@@ -22,6 +22,16 @@ SDL_Surface *pal_surface;
 /** Currently active palette */
 SDL_Palette *palette;
 
+
+int ScreenWidth = 1366;// GetConfigIntVariable("resolutionWidth", 640);
+int ScreenHeight = 768;// GetConfigIntVariable("resolutionHeight", 480);
+int WorkingWidth  = ScreenWidth+128;
+int WorkingHeight = ScreenHeight+176;
+
+
+
+
+
 /**
  * Is #sdl_pal_surface dirty?
  *

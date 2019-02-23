@@ -267,7 +267,19 @@ void __fastcall gmenu_clear_buffer(int x, int y, int width, int height)
 	v4 = height;
 	for (i = (char *)gpBuffer + screen_y_times_768[y] + x; v4; --v4) {
 		memset(i, 205, width);
+
+
+		#ifdef RESOLUTION_640x480 
+
 		i -= 768;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+
+		i -= WorkingWidth;
+#endif
+
+
 	}
 }
 

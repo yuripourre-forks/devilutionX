@@ -18,7 +18,19 @@ void __fastcall town_clear_upper_buf(unsigned char *a1)
 	while (v1 >= gpBufEnd) {
 		v4 = &v1[v2];
 		memset(v4, 0, 4 * v3);
-		v1 = &v4[4 * v3 - 832 + v2];
+
+		#ifdef RESOLUTION_640x480 
+						v1 = &v7[4 * v6-- - 832 + v5];
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+						v1 = &v7[4 * v6-- - (WorkingWidth + 64) + v5];
+
+#endif
+
+
+
 		if (!v2) {
 			v5 = 2;
 			v6 = 15;
@@ -27,7 +39,19 @@ void __fastcall town_clear_upper_buf(unsigned char *a1)
 					break;
 				v7 = &v1[v5];
 				memset(v7, 0, 4 * v6);
-				v1 = &v7[4 * v6-- - 832 + v5];
+
+				#ifdef RESOLUTION_640x480 
+								v1 = &v7[4 * v6-- - 832 + v5];
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+							v1 = &v7[4 * v6-- - (WorkingWidth + 64) + v5];
+
+#endif
+
+
+
 				v5 += 2;
 			} while (v5 != 32);
 			return;
@@ -60,7 +84,19 @@ void __fastcall town_clear_low_buf(unsigned char *y_related)
 		} else {
 			v4 = v1 + 64;
 		}
+		#ifdef RESOLUTION_640x480 
 		v1 = v4 - 832;
+
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+		v1 = v4 - (WorkingWidth + 64);
+
+		#endif
+
+
+
+
 		if (!v2)
 			break;
 		v2 -= 2;
@@ -75,7 +111,19 @@ void __fastcall town_clear_low_buf(unsigned char *y_related)
 		} else {
 			v8 = v1 + 64;
 		}
+
+
+	#ifdef RESOLUTION_640x480 
 		v1 = v8 - 832;
+
+	#endif
+
+	#ifdef RESOLUTION_1366x768 
+		v1 = v8 - (WorkingWidth + 64);
+
+	#endif
+
+
 		--v7;
 		v6 += 2;
 	} while (v6 != 32);
@@ -98,7 +146,20 @@ void __fastcall town_draw_clipped_e_flag(BYTE *buffer, int x, int y, int sx, int
 		level_cel_block = defs[i + 1];
 		if (level_cel_block)
 			drawLowerScreen(buf + 32);
-		buf -= 768 * 32;
+		
+
+
+		#ifdef RESOLUTION_640x480 
+			buf -= 768 * 32;
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+			buf -= WorkingWidth * 32;
+		#endif
+
+
+
+
 	}
 	town_draw_clipped_town(buffer, x, y, sx, sy, 0);
 }
@@ -260,7 +321,17 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 				if (v9)
 					drawLowerScreen(a1);
 				v25 += 2;
+				#ifdef RESOLUTION_640x480 
 				a1 -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+		a1 -= WorkingWidth * 32;
+#endif
+
+
+
+				
 			} while (v25 < 17);
 			town_draw_clipped_town((BYTE *)gpBuffer + *v7 + sx, xa, ya, sx, sy, 0);
 		} else {
@@ -295,7 +366,17 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 					if (v16)
 						drawLowerScreen(v13 + 32);
 					v26 += 2;
-					v13 -= 768 * 32;
+					#ifdef RESOLUTION_640x480 
+						v13 -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	v13 -= WorkingWidth * 32;
+
+#endif
+
+
+				
 				} while (v26 < 16);
 				town_draw_clipped_town((BYTE *)gpBuffer + *v11 + sx, xa, ya, sx, sy, 1);
 				v12 = a5a;
@@ -324,7 +405,17 @@ void __fastcall town_draw_lower(int x, int y, int sx, int sy, int a5, int some_f
 				if (v21)
 					drawLowerScreen(v19);
 				v27 += 2;
+				#ifdef RESOLUTION_640x480 
 				v19 -= 768 * 32;
+
+			#endif
+
+			#ifdef RESOLUTION_1366x768 
+				v19 -= WorkingWidth * 32;
+
+			#endif
+
+
 			} while (v27 < 16);
 			town_draw_clipped_town((BYTE *)gpBuffer + *v18 + sx, xa, ya, sx, sy, 0);
 		} else {
@@ -340,10 +431,29 @@ void __fastcall town_draw_clipped_e_flag_2(BYTE *buffer, int x, int y, int a4, i
 	BYTE *buf;
 	WORD *defs;
 
-	if (!a4)
+
+
+	#ifdef RESOLUTION_640x480 
+	if (!a4){
 		buf = buffer;
-	else
+		}
+	else{
 		buf = buffer + 768 * 32 * a4;
+	}
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	if (!a4){
+		buf = buffer + WorkingWidth * 32 * a4;
+		}
+	else{
+		buf = buffer + WorkingWidth * 32 * a4;
+	}
+#endif
+
+
+
+
 
 	defs = dpiece_defs_map_1[gendung_get_dpiece_num_from_coord(x, y)];
 
@@ -356,7 +466,16 @@ void __fastcall town_draw_clipped_e_flag_2(BYTE *buffer, int x, int y, int a4, i
 			if (level_cel_block)
 				drawLowerScreen(buf + 32);
 		}
+		#ifdef RESOLUTION_640x480 
 		buf -= 768 * 32;
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+		buf -= WorkingWidth * 32;
+
+#endif
+
 	}
 
 	if (a5 < 8)
@@ -519,7 +638,19 @@ void __fastcall town_draw_lower_2(int x, int y, int sx, int sy, int a5, int a6, 
 			if (level_cel_block) {
 				v8 = sy;
 				v9 = &screen_y_times_768[sy];
-				a1 = (unsigned char *)gpBuffer + *v9 + sx - 24544;
+				#ifdef RESOLUTION_640x480 
+								a1 = (unsigned char *)gpBuffer + *v9 + sx - 24544;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+				a1 = (unsigned char *)gpBuffer + *v9 + sx - (WorkingWidth * 31 + 736);
+
+
+				#endif
+
+
+
 				sxa = 0;
 				v10 = &dpiece_defs_map_1[0][16 * gendung_get_dpiece_num_from_coord(x, y) + 3];
 				v23 = v10;
@@ -529,7 +660,17 @@ void __fastcall town_draw_lower_2(int x, int y, int sx, int sy, int a5, int a6, 
 						if (level_cel_block)
 							drawLowerScreen(a1);
 					}
-					a1 -= 768 * 32;
+					#ifdef RESOLUTION_640x480 
+a1 -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+a1 -= WorkingWidth * 32;
+
+#endif
+
+
+					
 					++sxa;
 					v10 = v23 + 2;
 					v23 += 2;
@@ -572,13 +713,31 @@ LABEL_18:
 						if (v17)
 							drawLowerScreen(a1a + 32);
 					}
-					a1a -= 768 * 32;
+
+					#ifdef RESOLUTION_640x480 
+a1a -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+a1a -= WorkingWidth * 32;
+#endif
+
+
+
+					
 					++sxb;
 					v15 += 2;
 				} while (sxb < 7);
 				v18 = 2 * a6 + 2;
 				if (v18 < 8)
+				#ifdef RESOLUTION_640x480 
 					town_draw_clipped_town_2((int)gpBuffer + *v13 - 12288 * v18 + v11, xa, ya, a6, 2 * a6 + 2, v11, sy, 1);
+				#endif
+				#ifdef RESOLUTION_1366x768 
+					town_draw_clipped_town_2((int)gpBuffer + *v13 - WorkingWidth*16 * v18 + v11, xa, ya, a6, 2 * a6 + 2, v11, sy, 1);
+
+				#endif
+
 				v14 = a5a;
 			} else {
 				town_clear_low_buf((unsigned char *)gpBuffer + *v13 + v11);
@@ -605,7 +764,20 @@ LABEL_18:
 					if (v22)
 						drawLowerScreen(a1b);
 				}
+
+				#ifdef RESOLUTION_640x480 
 				a1b -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+a1b -= WorkingWidth * 32;
+#endif
+
+
+
+
+				
+				
 				++sxc;
 				v21 += 2;
 			} while (sxc < 7);
@@ -636,7 +808,17 @@ void __fastcall town_draw_e_flag(BYTE *buffer, int x, int y, int a4, int dir, in
 			if (level_cel_block)
 				drawUpperScreen(buf + 32);
 		}
-		buf -= 768 * 32;
+
+		#ifdef RESOLUTION_640x480 
+	buf -= 768 * 32;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	buf -= WorkingWidth * 32;
+#endif
+
+
+	
 	}
 
 	town_draw_town_all(buffer, x, y, a4, dir, sx, sy, 0);
@@ -757,7 +939,18 @@ void __fastcall town_draw_upper(int x, int y, int sx, int sy, INT_PTR a5, int a6
 						if (v13)
 							drawUpperScreen((unsigned char *)a1);
 					}
+					#ifdef RESOLUTION_640x480 
 					a1 -= 6144;
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+                                        a1 -= WorkingWidth*8;
+
+					#endif
+
+
+
 					++sxa;
 					v12 += 2;
 				} while (sxa < 7);
@@ -802,7 +995,20 @@ LABEL_19:
 							if (v21)
 								drawUpperScreen(v18 + 32);
 						}
-						v18 -= 768 * 32;
+						#ifdef RESOLUTION_640x480 
+									v18 -= 768 * 32;
+
+				#endif
+
+				#ifdef RESOLUTION_1366x768 
+						v18 -= WorkingWidth * 32;
+
+				#endif
+
+
+
+
+
 						++sxb;
 					} while (sxb < 7);
 					town_draw_town_all((BYTE *)gpBuffer + v14 + screen_y_times_768[sy], xa, ya, a6, dir, v14, sy, 1);
@@ -842,7 +1048,20 @@ LABEL_19:
 						if (v26)
 							drawUpperScreen(v24);
 					}
-					v24 -= 768 * 32;
+					#ifdef RESOLUTION_640x480 
+						v24 -= 768 * 32;
+
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					v24 -= WorkingWidth * 32;
+
+					#endif
+
+
+
+
+
 					++sxc;
 				} while (sxc < 7);
 				town_draw_town_all((BYTE *)gpBuffer + v14 + screen_y_times_768[sy], xa, ya, a6, dir, v14, sy, 0);

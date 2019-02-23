@@ -118,11 +118,23 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					if (dst < gpBufEnd)
 						break;
 					asm_trans_light_square_1_3(8, tbl, &dst, &src);
-					dst -= 800;
-					if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					if (dst < gpBufEnd)
 						break;
 					asm_trans_light_square_0_2(8, tbl, &dst, &src);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
 					--i;
 				} while (i);
 				break;
@@ -153,7 +165,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (yy_32);
 				LABEL_67:
 					WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -169,7 +188,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} else {
 						asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -184,8 +209,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							} else {
 								asm_trans_light_cel_1_3(32 - yy_32, tbl, &dst, &src);
 							}
-							dst -= 800;
-							yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							
+
+					yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
 					}
@@ -202,7 +234,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 					}
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+
+#endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -216,7 +256,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 								asm_trans_light_cel_1_3(32 - yy_32, tbl, &dst, &src);
 							}
 							src += (unsigned char)src & 2;
-							dst = &dst[yy_32 - 800];
+#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+
+#endif
+
 							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
@@ -235,7 +283,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} else {
 						asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						i = 8;
@@ -243,12 +297,24 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_1_3(8, tbl, &dst, &src);
-							dst -= 800;
-							if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
-							dst -= 800;
-							--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							
+
+						--i;
 						} while (i);
 						return;
 					}
@@ -265,7 +331,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 					}
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						i = 8;
@@ -273,11 +346,23 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_1_3(8, tbl, &dst, &src);
-							dst -= 800;
-							if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							
+						if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							
 							--i;
 						} while (i);
 						return;
@@ -306,8 +391,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					dst += 4;
 					--j;
 				} while (j);
-				dst -= 800;
-				if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+			if (dst < gpBufEnd)
 					break;
 				j = 8;
 				do {
@@ -317,7 +408,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					dst += 4;
 					--j;
 				} while (j);
-				dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
 				--i;
 			} while (i);
 			break;
@@ -337,8 +434,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					if (!xx_32) {
 					LABEL_271:
 						WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-						dst -= 800;
-						if (!--yy_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+				if (!--yy_32)
 							return;
 						goto LABEL_251;
 					}
@@ -441,8 +544,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						} while (n_draw_shift);
 					}
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+					xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
 					do {
@@ -484,8 +593,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 								} while (n_draw_shift);
 							}
 						}
-						dst -= 800;
-						yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						
+		yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
 				}
@@ -522,7 +637,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						dst += 2;
 					}
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
@@ -558,7 +680,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 								dst += 2;
 							}
 						}
-						dst = &dst[yy_32 - 800];
+#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
@@ -605,7 +734,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						} while (n_draw_shift);
 					}
 				}
-				dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					i = 8;
@@ -620,8 +755,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+					if (dst < gpBufEnd)
 							break;
 						j = 8;
 						do {
@@ -631,8 +772,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+					--i;
 					} while (i);
 					return;
 				}
@@ -669,7 +817,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 						dst += 2;
 					}
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					i = 8;
@@ -684,8 +839,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						
+					if (dst < gpBufEnd)
 							break;
 						j = 8;
 						do {
@@ -695,8 +856,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+					--i;
 					} while (i);
 					return;
 				}
@@ -723,7 +890,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
 			if (dst < gpBufEnd)
 				break;
 			j = 8;
@@ -733,7 +906,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
 			--i;
 		} while (i);
 		break;
@@ -806,7 +985,13 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 			} while (yy_32);
 		LABEL_391:
 			WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
 			if (!--xx_32)
 				return;
 		}
@@ -847,8 +1032,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+		if (!xx_32)
 				break;
 		}
 		yy_32 = 2;
@@ -887,8 +1078,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+		yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
 	case 3: // upper (top transparent), black
@@ -927,8 +1125,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+		if (!xx_32)
 				break;
 			dst += xx_32;
 		}
@@ -967,7 +1172,14 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst = &dst[yy_32 - 800];
+			#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 			yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
@@ -1008,8 +1220,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+		if (!xx_32)
 				break;
 		}
 		i = 8;
@@ -1023,8 +1242,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
-			if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	if (dst < gpBufEnd)
 				break;
 			j = 8;
 			do {
@@ -1033,8 +1259,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
-			--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	--i;
 		} while (i);
 		break;
 	default: // upper (top transparent), black
@@ -1073,8 +1306,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	if (!xx_32)
 				break;
 			dst += xx_32;
 		}
@@ -1089,8 +1329,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
-			if (dst < gpBufEnd)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	if (dst < gpBufEnd)
 				break;
 			j = 8;
 			do {
@@ -1099,8 +1346,15 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
-			--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+--i;
 		} while (i);
 		break;
 	}
@@ -1146,8 +1400,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					++dst;
 					--i;
 				} while (i);
-				dst -= 800;
-				--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	--gpDrawMask;
 				--xx_32;
 			} while (xx_32);
 			break;
@@ -1185,8 +1446,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					gdwCurrentMask = left_shift;
 				} while (yy_32);
 			LABEL_129:
-				dst -= 800;
-				--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+--gpDrawMask;
 				--xx_32;
 			} while (xx_32);
 			break;
@@ -1208,8 +1476,13 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 						--n_draw_shift;
 					} while (n_draw_shift);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
 					do {
@@ -1230,8 +1503,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 								--n_draw_shift;
 							} while (n_draw_shift);
 						}
-						dst -= 800;
-						yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
 				}
@@ -1250,7 +1530,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
@@ -1267,7 +1554,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							src += 4;
 							dst += 2;
 						}
-						dst = &dst[yy_32 - 800];
+						#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
@@ -1292,8 +1586,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 						--n_draw_shift;
 					} while (n_draw_shift);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+xx_32 -= 2;
 				if (xx_32 < 0) {
 					gpDrawMask -= 16;
 					yy_32 = 16;
@@ -1310,8 +1611,13 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							++dst;
 							--i;
 						} while (i);
-						dst -= 800;
-						--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						--gpDrawMask;
 						--yy_32;
 					} while (yy_32);
 					return;
@@ -1331,7 +1637,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					gpDrawMask -= 16;
@@ -1350,8 +1663,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							--i;
 						} while (i);
 						src += (unsigned char)src & 2;
-						dst -= 800;
-						--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	--gpDrawMask;
 						--yy_32;
 					} while (yy_32);
 					return;
@@ -1373,8 +1693,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					if (dst < gpBufEnd)
 						break;
 					asm_trans_light_mask(32, tbl, &dst, &src, *gpDrawMask);
-					dst -= 800;
-					--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	--gpDrawMask;
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -1402,8 +1729,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 						gdwCurrentMask = asm_trans_light_mask(width, tbl, &dst, &src, gdwCurrentMask);
 					} while (yy_32);
 				LABEL_50:
-					dst -= 800;
-					--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	--gpDrawMask;
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -1413,8 +1747,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
-					xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
 						do {
@@ -1423,8 +1764,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							dst += yy_32;
 							src += (32 - (_BYTE)yy_32) & 2;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
-							dst -= 800;
-							yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+		yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
 					}
@@ -1435,7 +1783,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 				while (dst >= gpBufEnd) {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -1444,7 +1799,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 								break;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							src += (unsigned char)src & 2;
-							dst = &dst[yy_32 - 800];
+							#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
@@ -1457,8 +1819,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
-					xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	xx_32 -= 2;
 					if (xx_32 < 0) {
 						gpDrawMask -= 16;
 						yy_32 = 16;
@@ -1467,8 +1836,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 								break;
 							src += (unsigned char)src & 2;
 							asm_trans_light_mask(32, tbl, &dst, &src, *gpDrawMask);
-							dst -= 800;
-							--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						
+
+	--gpDrawMask;
 							--yy_32;
 						} while (yy_32);
 						return;
@@ -1480,7 +1856,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 				while (dst >= gpBufEnd) {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						gpDrawMask -= 16;
@@ -1490,8 +1873,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 								break;
 							asm_trans_light_mask(32, tbl, &dst, &src, *gpDrawMask);
 							src += (unsigned char)src & 2;
-							dst -= 800;
-							--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							
+
+--gpDrawMask;
 							--yy_32;
 						} while (yy_32);
 						return;
@@ -1526,8 +1916,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 				++dst;
 				--i;
 			} while (i);
-			dst -= 800;
-			--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	--gpDrawMask;
 			--xx_32;
 		} while (xx_32);
 		break;
@@ -1565,8 +1962,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 				gdwCurrentMask = left_shift;
 			} while (yy_32);
 		LABEL_208:
-			dst -= 800;
-			--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+--gpDrawMask;
 			--xx_32;
 		} while (xx_32);
 		break;
@@ -1586,8 +1990,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				yy_32 = 2;
 				do {
 					if (dst < gpBufEnd)
@@ -1605,14 +2016,21 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							--n_draw_shift;
 						} while (n_draw_shift);
 					}
-					dst -= 800;
-					yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+				yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
 			}
 			xx_32 -= 2;
 		}
-		break;
+	break;
 	case 3: // upper (bottom transparent), black
 		xx_32 = 30;
 		while (dst >= gpBufEnd) {
@@ -1628,8 +2046,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				yy_32 = 2;
 				do {
 					if (dst < gpBufEnd)
@@ -1646,7 +2071,14 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 							--n_draw_shift;
 						} while (n_draw_shift);
 					}
-					dst = &dst[yy_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 					yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
@@ -1671,8 +2103,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				gpDrawMask -= 16;
 				yy_32 = 16;
 				do {
@@ -1687,8 +2126,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 						++dst;
 						--i;
 					} while (i);
-					dst -= 800;
-					--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
 				return;
@@ -1711,8 +2157,15 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				gpDrawMask -= 16;
 				yy_32 = 16;
 				do {
@@ -1727,8 +2180,13 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 						++dst;
 						--i;
 					} while (i);
-					dst -= 800;
-					--gpDrawMask;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
 				return;
@@ -1794,8 +2252,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					dst += 4;
 					--j;
 				} while (j);
-				dst -= 800;
-				--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	--i;
 			} while (i);
 			break;
 		case 9: // upper (solid), without lighting
@@ -1838,8 +2303,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					} while (n_draw_shift);
 				} while (yy_32);
 			LABEL_133:
-				dst -= 800;
-				--xx_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+--xx_32;
 			} while (xx_32);
 			break;
 		case 10: // upper (solid), without lighting
@@ -1860,8 +2332,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 						--n_draw_shift;
 					} while (n_draw_shift);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
 					do {
@@ -1882,8 +2359,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 								--n_draw_shift;
 							} while (n_draw_shift);
 						}
-						dst -= 800;
-						yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
 				}
@@ -1902,7 +2386,14 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+			#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
@@ -1919,7 +2410,14 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							src += 4;
 							dst += 2;
 						}
-						dst = &dst[yy_32 - 800];
+						#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
@@ -1944,8 +2442,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 						--n_draw_shift;
 					} while (n_draw_shift);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	xx_32 -= 2;
 				if (xx_32 < 0) {
 					i = 16;
 					do {
@@ -1958,8 +2463,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						
+
+--i;
 					} while (i);
 					return;
 				}
@@ -1978,7 +2490,14 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					i = 16;
@@ -1992,8 +2511,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							dst += 4;
 							--j;
 						} while (j);
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						--i;
 					} while (i);
 					return;
 				}
@@ -2014,8 +2538,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					if (dst < gpBufEnd)
 						break;
 					asm_cel_light_square(8, tbl, &dst, &src);
-					dst -= 800;
-					--xx_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					--xx_32;
 				} while (xx_32);
 				break;
 			case 1: // upper (solid), with lighting
@@ -2039,8 +2568,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 						asm_cel_light_edge(width, tbl, &dst, &src);
 					} while (yy_32);
 				LABEL_58:
-					dst -= 800;
-					--xx_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					--xx_32;
 				} while (xx_32);
 				break;
 			case 2: // upper (solid), with lighting
@@ -2049,8 +2583,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
-					xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
 						do {
@@ -2059,8 +2598,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							dst += yy_32;
 							src += (32 - (_BYTE)yy_32) & 2;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
-							dst -= 800;
-							yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
 					}
@@ -2071,7 +2615,14 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 				while (dst >= gpBufEnd) {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+
+#endif
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -2080,7 +2631,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 								break;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							src += (unsigned char)src & 2;
-							dst = &dst[yy_32 - 800];
+							#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+
+#endif
+
 							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
@@ -2093,16 +2652,26 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
-					xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 16;
 						do {
 							if (dst < gpBufEnd)
 								break;
 							asm_cel_light_square(8, tbl, &dst, &src);
-							dst -= 800;
-							--yy_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							--yy_32;
 						} while (yy_32);
 						return;
 					}
@@ -2113,7 +2682,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 				while (dst >= gpBufEnd) {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+
+#endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 16;
@@ -2121,8 +2698,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							if (dst < gpBufEnd)
 								break;
 							asm_cel_light_square(8, tbl, &dst, &src);
-							dst -= 800;
-							--yy_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif							--yy_32;
 						} while (yy_32);
 						return;
 					}
@@ -2153,8 +2735,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 				dst += 4;
 				--j;
 			} while (j);
-			dst -= 800;
-			--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			--i;
 		} while (i);
 		break;
 	case 1: // upper (solid), black
@@ -2196,8 +2783,13 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 				} while (n_draw_shift);
 			} while (yy_32);
 		LABEL_205:
-			dst -= 800;
-			--xx_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			--xx_32;
 		} while (xx_32);
 		break;
 	case 2: // upper (solid), black
@@ -2216,8 +2808,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				yy_32 = 2;
 				do {
 					if (dst < gpBufEnd)
@@ -2235,8 +2834,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							--n_draw_shift;
 						} while (n_draw_shift);
 					}
-					dst -= 800;
-					yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
 			}
@@ -2258,8 +2864,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	if (!xx_32) {
 				yy_32 = 2;
 				do {
 					if (dst < gpBufEnd)
@@ -2276,7 +2889,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 							--n_draw_shift;
 						} while (n_draw_shift);
 					}
-					dst = &dst[yy_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
+
 					yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
@@ -2301,8 +2922,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif		
+
+	if (!xx_32) {
 				i = 16;
 				do {
 					if (dst < gpBufEnd)
@@ -2313,8 +2941,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 						dst += 4;
 						--j;
 					} while (j);
-					dst -= 800;
-					--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	--i;
 				} while (i);
 				return;
 			}
@@ -2336,8 +2971,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
-			if (!xx_32) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!xx_32) {
 				i = 16;
 				do {
 					if (dst < gpBufEnd)
@@ -2348,8 +2990,15 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 						dst += 4;
 						--j;
 					} while (j);
-					dst -= 800;
-					--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+--i;
 				} while (i);
 				return;
 			}
@@ -2410,8 +3059,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+if (dst < gpBufEnd) {
 					j = 8;
 					do {
 						dst[0] = 0;
@@ -2423,8 +3079,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	--i;
 			} while (i);
 			break;
 		case 1: // lower (top transparent), black
@@ -2443,8 +3106,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					if (!yy_32) {
 					LABEL_433:
 						WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-						dst -= 800;
-						if (!--xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						
+
+if (!--xx_32)
 							return;
 						goto LABEL_412;
 					}
@@ -2546,8 +3216,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-xx_32 + 32];
 					dst += 32;
 				}
-				dst -= 800;
-				if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				if (!xx_32)
 					break;
 			}
 			yy_32 = 2;
@@ -2589,8 +3264,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-yy_32 + 32];
 					dst += 32;
 				}
-				dst -= 800;
-				yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	yy_32 += 2;
 			} while (yy_32 != 32);
 			break;
 		case 3: // lower (top transparent), black
@@ -2632,8 +3314,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-xx_32 + 32];
 					dst = &dst[-xx_32 + 32];
 				}
-				dst -= 800;
-				if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				if (!xx_32)
 					break;
 				dst += xx_32;
 			}
@@ -2675,7 +3362,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-yy_32 + 32];
 					dst = &dst[-yy_32 + 32];
 				}
-				dst = &dst[yy_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
+
 				yy_32 += 2;
 			} while (yy_32 != 32);
 			break;
@@ -2719,8 +3414,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-xx_32 + 32];
 					dst += 32;
 				}
-				dst -= 800;
-				if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				if (!xx_32)
 					break;
 			}
 			i = 8;
@@ -2737,8 +3437,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	if (dst < gpBufEnd) {
 					j = 8;
 					do {
 						dst[0] = 0;
@@ -2750,8 +3457,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				--i;
 			} while (i);
 			break;
 		default: // lower (top transparent), black
@@ -2793,8 +3505,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src = &src[-xx_32 + 32];
 					dst = &dst[-xx_32 + 32];
 				}
-				dst -= 800;
-				if (!xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				if (!xx_32)
 					break;
 				dst += xx_32;
 			}
@@ -2812,8 +3529,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	if (dst < gpBufEnd) {
 					j = 8;
 					do {
 						dst[0] = 0;
@@ -2825,8 +3549,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	--i;
 			} while (i);
 			break;
 		}
@@ -2846,15 +3577,29 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+if (dst < gpBufEnd) {
 					asm_trans_light_square_0_2(8, tbl, &dst, &src);
 				} else {
 					src += 32;
 					dst += 32;
 				}
-				dst -= 800;
-				--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+--i;
 			} while (i);
 			break;
 		case 1: // lower (top transparent), with lighting
@@ -2887,8 +3632,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 				} while (yy_32);
 			LABEL_69:
 				WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-				dst -= 800;
-				--xx_32;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	--xx_32;
 			} while (xx_32);
 			break;
 		case 2: // lower (top transparent), with lighting
@@ -2897,7 +3649,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 			if (pbDst >= gpBufEnd) {
 				tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 				if (tile_42_45 > 45) {
+#ifdef RESOLUTION_640x480
 					dst = pbDst - 12288;
+#endif
+
+#ifdef RESOLUTION_1366x768
+					dst = pbDst - WorkingWidth * 16;
+					;
+#endif
+
 					src += 288;
 				LABEL_98:
 					yy_32 = 2;
@@ -2921,8 +3681,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 						} else {
 							asm_trans_light_cel_1_3(32 - yy_32, tbl, &dst, &src);
 						}
-						dst -= 800;
-						yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
 				}
@@ -2942,8 +3707,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 				} else {
 					asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_98;
 		case 3: // lower (top transparent), with lighting
@@ -2952,7 +3724,14 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 			if (pbDst >= gpBufEnd) {
 				tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 				if (tile_42_45 > 45) {
+#ifdef RESOLUTION_640x480
 					dst = pbDst - 12288;
+#endif
+
+#ifdef RESOLUTION_1366x768
+					dst = pbDst - WorkingWidth * 16;
+#endif
+
 					src += 288;
 				LABEL_154:
 					yy_32 = 2;
@@ -2975,7 +3754,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 							asm_trans_light_cel_1_3(32 - yy_32, tbl, &dst, &src);
 						}
 						src += (unsigned char)src & 2;
-						dst = &dst[yy_32 - 800];
+						#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
+
 						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
@@ -2995,8 +3782,16 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 				}
 				src += (unsigned char)src & 2;
-				dst = &dst[xx_32 - 800];
-				xx_32 -= 2;
+			
+				
+#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_154;
 		case 4: // lower (top transparent), with lighting
@@ -3005,8 +3800,14 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 			if (pbDst >= gpBufEnd) {
 				tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 				if (tile_42_45 > 45) {
+				#ifdef RESOLUTION_640x480
 					dst = pbDst - 12288;
-					src += 288;
+				#endif
+
+				#ifdef RESOLUTION_1366x768
+					dst = pbDst - WorkingWidth * 16;
+				#endif src += 288;
+
 				LABEL_210:
 					i = 8;
 					do {
@@ -3016,15 +3817,29 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 							src += 32;
 							dst += 32;
 						}
-						dst -= 800;
-						if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	if (dst < gpBufEnd) {
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
 						} else {
 							src += 32;
 							dst += 32;
 						}
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	--i;
 					} while (i);
 					return;
 				}
@@ -3044,8 +3859,15 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 				} else {
 					asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 				}
-				dst -= 800;
-				xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+	xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_210;
 		default: // lower (top transparent), with lighting
@@ -3054,7 +3876,13 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 			if (pbDst >= gpBufEnd) {
 				tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 				if (tile_42_45 > 45) {
+					#ifdef RESOLUTION_640x480 
 					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 					src += 288;
 				LABEL_249:
 					i = 8;
@@ -3065,15 +3893,29 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 							src += 32;
 							dst += 32;
 						}
-						dst -= 800;
-						if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	if (dst < gpBufEnd) {
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
 						} else {
 							src += 32;
 							dst += 32;
 						}
-						dst -= 800;
-						--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+	--i;
 					} while (i);
 					return;
 				}
@@ -3092,7 +3934,14 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 					asm_trans_light_cel_1_3(32 - xx_32, tbl, &dst, &src);
 				}
 				src += (unsigned char)src & 2;
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_249;
@@ -3119,8 +3968,15 @@ LABEL_11:
 				src += 32;
 				dst += 32;
 			}
-			dst -= 800;
-			if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (dst < gpBufEnd) {
 				j = 8;
 				do {
 					dst[0] = src[0];
@@ -3133,8 +3989,15 @@ LABEL_11:
 				src += 32;
 				dst += 32;
 			}
-			dst -= 800;
-			--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+--i;
 		} while (i);
 		break;
 	case 9: // lower (top transparent), without lighting
@@ -3213,8 +4076,15 @@ LABEL_11:
 			} while (yy_32);
 		LABEL_293:
 			WorldBoolFlag = ((_BYTE)WorldBoolFlag + 1) & 1;
-			dst -= 800;
-			if (!--xx_32)
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+if (!--xx_32)
 				return;
 		}
 	case 10: // lower (top transparent), without lighting
@@ -3223,7 +4093,13 @@ LABEL_11:
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_308:
 				yy_32 = 2;
@@ -3276,8 +4152,15 @@ LABEL_11:
 							} while (n_draw_shift);
 						}
 					}
-					dst -= 800;
-					yy_32 += 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
 			}
@@ -3325,8 +4208,15 @@ LABEL_11:
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
-			xx_32 -= 2;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif			
+
+xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_308;
 	case 11: // lower (top transparent), without lighting
@@ -3371,12 +4261,25 @@ LABEL_11:
 						dst += 2;
 					}
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_336;
 		}
-		dst = pbDst - 12288;
+		#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 		src += 288;
 	LABEL_336:
 		yy_32 = 2;
@@ -3419,7 +4322,13 @@ LABEL_11:
 					dst += 2;
 				}
 			}
-			dst = &dst[yy_32 - 800];
+		#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
 			yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
@@ -3429,7 +4338,13 @@ LABEL_11:
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_364:
 				i = 8;
@@ -3447,8 +4362,15 @@ LABEL_11:
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
-					if (dst < gpBufEnd) {
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif				
+
+	if (dst < gpBufEnd) {
 						j = 8;
 						do {
 							dst[0] = src[0];
@@ -3461,8 +4383,15 @@ LABEL_11:
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
-					--i;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif					
+
+--i;
 				} while (i);
 				return;
 			}
@@ -3510,7 +4439,15 @@ LABEL_11:
 					} while (n_draw_shift);
 				}
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+		
+		
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_364;
@@ -3520,7 +4457,13 @@ LABEL_11:
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_389:
 				i = 8;
@@ -3538,7 +4481,13 @@ LABEL_11:
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
 					if (dst < gpBufEnd) {
 						j = 8;
 						do {
@@ -3552,7 +4501,13 @@ LABEL_11:
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
 					--i;
 				} while (i);
 				return;
@@ -3592,7 +4547,14 @@ LABEL_11:
 					dst += 2;
 				}
 			}
-			dst = &dst[xx_32 - 800];
+		#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_389;
@@ -3643,7 +4605,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -3685,7 +4653,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						yy_32 -= width;
 					} while (yy_32);
 				LABEL_252:
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
 					--gpDrawMask;
 					--xx_32;
 				} while (xx_32);
@@ -3710,7 +4684,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
 					if (!i)
 						break;
 				}
@@ -3734,7 +4714,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					i += 2;
 				} while (i != 32);
 				break;
@@ -3757,7 +4744,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 					dst += i;
@@ -3781,7 +4775,19 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst = &dst[i - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[i - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[i - WorkingWidth - 32];
+#endif
+
+
+
+
+
+					
 					i += 2;
 				} while (i != 32);
 				break;
@@ -3805,7 +4811,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 				}
@@ -3826,7 +4839,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -3850,7 +4870,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 					dst += i;
@@ -3872,7 +4899,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -3894,7 +4928,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -3926,7 +4967,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						yy_32 -= width;
 					} while (yy_32);
 				LABEL_52:
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--xx_32;
 				} while (xx_32);
@@ -3936,7 +4984,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_62:
 						yy_32 = 2;
@@ -3954,7 +5008,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 							src += (32 - (_BYTE)yy_32) & 2;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							yy_32 += 2;
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 						} while (yy_32 != 32);
 						return;
 					}
@@ -3967,7 +5028,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_62;
@@ -3976,7 +5044,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_80:
 						yy_32 = 2;
@@ -3993,7 +5067,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							/// BUGFIX: uncomment this line
 							// src += (unsigned char)src & 2;
-							dst = &dst[yy_32 - 800];
+							#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
@@ -4006,7 +5087,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				do {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_80;
@@ -4015,7 +5103,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_98:
 						gpDrawMask -= 16;
@@ -4027,7 +5121,15 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 								src += 32;
 								dst += 32;
 							}
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 							--gpDrawMask;
 							--yy_32;
 						} while (yy_32);
@@ -4042,7 +5144,15 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_98;
@@ -4051,7 +5161,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_117:
 						gpDrawMask -= 16;
@@ -4064,7 +5180,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 								src += 32;
 								dst += 32;
 							}
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 							--gpDrawMask;
 							--yy_32;
 						} while (yy_32);
@@ -4078,7 +5201,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				do {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_117;
@@ -4114,7 +5244,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				src += 32;
 				dst += 32;
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			--gpDrawMask;
 			--yy_32;
 		} while (yy_32);
@@ -4156,7 +5293,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				yy_32 -= width;
 			} while (yy_32);
 		LABEL_152:
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			--gpDrawMask;
 			--xx_32;
 		} while (xx_32);
@@ -4166,7 +5310,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_162:
 				yy_32 = 2;
@@ -4195,7 +5345,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 							--n_draw_shift;
 						} while (n_draw_shift);
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					yy_32 += 2;
 				} while (yy_32 != 32);
 				return;
@@ -4221,7 +5378,15 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_162;
@@ -4247,12 +5412,25 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_180;
 		}
-		dst = pbDst - 12288;
+		#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 		src += 288;
 	LABEL_180:
 		yy_32 = 2;
@@ -4276,7 +5454,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				src += 4;
 				dst += 2;
 			}
-			dst = &dst[yy_32 - 800];
+			#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
 			yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
@@ -4285,7 +5469,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_198:
 				gpDrawMask -= 16;
@@ -4306,7 +5496,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -4333,7 +5530,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_198;
@@ -4342,7 +5546,13 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_217:
 				gpDrawMask -= 16;
@@ -4364,7 +5574,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -4386,7 +5603,14 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 				src += 4;
 				dst += 2;
 			}
-			dst = &dst[xx_32 - 800];
+			#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_217;
@@ -4451,7 +5675,15 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 					--i;
 				} while (i);
 				break;
@@ -4498,7 +5730,15 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						}
 					} while (yy_32);
 				LABEL_232:
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -4522,7 +5762,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 				}
@@ -4546,7 +5793,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					i += 2;
 				} while (i != 32);
 				break;
@@ -4569,7 +5823,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 					dst += i;
@@ -4593,7 +5854,19 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst = &dst[i - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[i - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[i - WorkingWidth - 32];
+#endif
+
+
+
+
+
+					
 					i += 2;
 				} while (i != 32);
 				break;
@@ -4617,7 +5890,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 				}
@@ -4634,7 +5914,15 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 					--i;
 				} while (i);
 				break;
@@ -4657,7 +5945,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src = &src[32 - i];
 						dst = &dst[32 - i];
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					if (!i)
 						break;
 					dst += i;
@@ -4675,7 +5970,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--i;
 				} while (i);
 				break;
@@ -4696,7 +5998,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -4720,7 +6029,15 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 							yy_32 -= width;
 						}
 					} while (yy_32);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 					--xx_32;
 				} while (xx_32);
 				break;
@@ -4729,7 +6046,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_68:
 						yy_32 = 2;
@@ -4747,7 +6070,15 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 							src += (32 - (_BYTE)yy_32) & 2;
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							yy_32 += 2;
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
+
 						} while (yy_32 != 32);
 						return;
 					}
@@ -4760,7 +6091,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_68;
@@ -4769,7 +6107,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_83:
 						yy_32 = 2;
@@ -4785,7 +6129,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						do {
 							asm_cel_light_edge(32 - yy_32, tbl, &dst, &src);
 							src += (unsigned char)src & 2;
-							dst = &dst[yy_32 - 800];
+							#ifdef RESOLUTION_640x480 
+dst = &dst[yy_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[yy_32 - WorkingWidth - 32];
+#endif
+
 							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
@@ -4798,7 +6149,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				do {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_83;
@@ -4807,7 +6165,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_100:
 						i = 16;
@@ -4818,7 +6182,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 								src += 32;
 								dst += 32;
 							}
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 							--i;
 						} while (i);
 						return;
@@ -4832,7 +6203,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 					dst += xx_32;
 					src += (32 - (_BYTE)xx_32) & 2;
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_100;
@@ -4841,7 +6219,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				if (pbDst >= gpBufEnd) {
 					tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 					if (tile_42_45 > 45) {
-						dst = pbDst - 12288;
+						#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 						src += 288;
 					LABEL_116:
 						j = 16;
@@ -4852,7 +6236,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 								src += 32;
 								dst += 32;
 							}
-							dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 							--j;
 						} while (j);
 						return;
@@ -4865,7 +6256,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				do {
 					asm_cel_light_edge(32 - xx_32, tbl, &dst, &src);
 					src += (unsigned char)src & 2;
-					dst = &dst[xx_32 - 800];
+					#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
 				goto LABEL_116;
@@ -4898,7 +6296,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				src += 32;
 				dst += 32;
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			--i;
 		} while (i);
 		break;
@@ -4947,7 +6352,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				}
 			} while (yy_32);
 		LABEL_143:
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			--xx_32;
 		} while (xx_32);
 		break;
@@ -4956,7 +6368,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_153:
 				yy_32 = 2;
@@ -4986,7 +6404,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						} while (n_draw_shift);
 					}
 					yy_32 += 2;
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 				} while (yy_32 < 32);
 				return;
 			}
@@ -5011,7 +6436,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_153;
@@ -5037,12 +6469,25 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 					src += 4;
 					dst += 2;
 				}
-				dst = &dst[xx_32 - 800];
+				#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_171;
 		}
-		dst = pbDst - 12288;
+					#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 		src += 288;
 	LABEL_171:
 		yy_32 = 2;
@@ -5068,7 +6513,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 			}
 			dst += yy_32;
 			yy_32 += 2;
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 		} while (yy_32 < 32);
 		break;
 	case 12: // lower (solid), without lighting
@@ -5076,7 +6528,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_189:
 				i = 16;
@@ -5093,7 +6551,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--i;
 				} while (i);
 				return;
@@ -5119,7 +6584,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 					--n_draw_shift;
 				} while (n_draw_shift);
 			}
-			dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_189;
@@ -5128,7 +6600,13 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 		if (pbDst >= gpBufEnd) {
 			tile_42_45 = (unsigned int)(pbDst - gpBufEnd + 1023) >> 8;
 			if (tile_42_45 > 45) {
-				dst = pbDst - 12288;
+				#ifdef RESOLUTION_640x480 
+					dst = pbDst - 12288;
+					#endif
+
+					#ifdef RESOLUTION_1366x768 
+					dst = pbDst - WorkingWidth * 16;
+					#endif
 				src += 288;
 			LABEL_205:
 				i = 16;
@@ -5145,7 +6623,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 						src += 32;
 						dst += 32;
 					}
-					dst -= 800;
+#ifdef RESOLUTION_640x480 
+dst -= 800;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst -= WorkingWidth + 32;
+#endif
+
 					--i;
 				} while (i);
 				return;
@@ -5166,7 +6651,14 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 				src += 4;
 				dst += 2;
 			}
-			dst = &dst[xx_32 - 800];
+			#ifdef RESOLUTION_640x480 
+dst = &dst[xx_32 - 800];
+#endif
+
+#ifdef RESOLUTION_1366x768 
+dst = &dst[xx_32 - WorkingWidth - 32];
+#endif
+
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
 		goto LABEL_205;
@@ -5191,7 +6683,17 @@ void __fastcall world_draw_black_tile(unsigned char *pbDst)
 			dst += 4;
 			--j;
 		} while (j);
+
+
+	#ifdef RESOLUTION_640x480 
 		dst = &dst[xx_32 - 832];
+	#endif
+
+	#ifdef RESOLUTION_1366x768 
+	dst = &dst[xx_32 - (WorkingWidth + 64)];
+
+	#endif
+	
 		if (!xx_32)
 			break;
 		xx_32 -= 2;
@@ -5206,7 +6708,16 @@ void __fastcall world_draw_black_tile(unsigned char *pbDst)
 			dst += 4;
 			--j;
 		} while (j);
+		#ifdef RESOLUTION_640x480 
 		dst = &dst[yy_32 - 832];
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+		dst = &dst[xx_32 - (WorkingWidth + 64)];
+		#endif
+
+
+	
 		--i;
 		yy_32 += 2;
 	} while (yy_32 != 32);

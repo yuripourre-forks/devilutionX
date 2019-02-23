@@ -22,8 +22,21 @@ bool UiItemsWraps;
 char *UiTextInput;
 int UiTextInputLen;
 
+
+
+
+#ifdef RESOLUTION_640x480 
 int SCREEN_WIDTH = 640;
 int SCREEN_HEIGHT = 480;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+int SCREEN_WIDTH = 640;
+int SCREEN_HEIGHT = 480;
+#endif
+
+
+
 
 int fadeValue = 0;
 int SelectedItem = 0;

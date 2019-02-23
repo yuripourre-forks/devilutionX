@@ -4,7 +4,18 @@
 #define DMAXY					40
 
 #define LIGHTSIZE				6912 // 27 * 256
+
+
+#ifdef RESOLUTION_640x480 
 #define ROW_PITCH				768
+#endif
+
+#ifdef RESOLUTION_1366x768 
+#define ROW_PITCH				WorkingWidth 
+#endif
+
+
+
 
 // must be unsigned to generate unsigned comparisons with pnum
 #define MAX_PLRS				4
