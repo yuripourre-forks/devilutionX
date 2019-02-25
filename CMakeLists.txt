@@ -188,6 +188,7 @@ add_definitions(
     # Skip fades and other fluff
     -DFASTER
     -DRESOLUTION_1366x768
+    #-DRESOLUTION_640x480
 )
 
 # Ignore serious warnings due to "quality" of decompiled code

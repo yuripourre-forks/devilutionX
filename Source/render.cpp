@@ -122,18 +122,22 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					if (dst < gpBufEnd)
+#endif
+					if (dst < gpBufEnd)
 						break;
 					asm_trans_light_square_0_2(8, tbl, &dst, &src);
 #ifdef RESOLUTION_640x480 
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 					--i;
 				} while (i);
@@ -169,9 +173,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 					--xx_32;
 				} while (xx_32);
@@ -192,9 +198,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -213,9 +221,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							
+#endif
+							
 
 					yy_32 += 2;
 						} while (yy_32 != 32);
@@ -238,10 +248,12 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 
 #endif
+
 
 					xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -257,13 +269,17 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 							}
 							src += (unsigned char)src & 2;
 #ifdef RESOLUTION_640x480 
-dst = &dst[xx_32 - 800];
+dst = &dst[yy_32 - 800];
 #endif
+
+
 
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 
 #endif
+
+
 
 							yy_32 += 2;
 						} while (yy_32 != 32);
@@ -287,9 +303,13 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+
+					
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						i = 8;
@@ -301,18 +321,26 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							if (dst < gpBufEnd)
+#endif
+
+							if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
 #ifdef RESOLUTION_640x480 
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							
+#endif
+
+							
 
 						--i;
 						} while (i);
@@ -335,9 +363,13 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
+
 
 					xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -350,9 +382,13 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							
+#endif
+
+							
 						if (dst < gpBufEnd)
 								break;
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
@@ -360,9 +396,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							
+#endif
+
+							
 							--i;
 						} while (i);
 						return;
@@ -395,9 +435,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+
+				
 			if (dst < gpBufEnd)
 					break;
 				j = 8;
@@ -412,9 +456,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+
+				
 				--i;
 			} while (i);
 			break;
@@ -438,9 +486,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+
+					
 				if (!--yy_32)
 							return;
 						goto LABEL_251;
@@ -548,9 +600,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+
+			
 					xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
@@ -597,9 +653,13 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						
+#endif
+
+						
 		yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
@@ -641,9 +701,12 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -684,9 +747,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 						yy_32 += 2;
 					} while (yy_32 != 32);
@@ -738,9 +803,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 				xx_32 -= 2;
 				if (xx_32 < 0) {
 					i = 8;
@@ -759,9 +826,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 					if (dst < gpBufEnd)
 							break;
 						j = 8;
@@ -776,9 +845,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 					--i;
 					} while (i);
@@ -821,9 +892,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -843,9 +916,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						
+#endif
+						
 					if (dst < gpBufEnd)
 							break;
 						j = 8;
@@ -860,9 +935,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 					--i;
 					} while (i);
 					return;
@@ -894,9 +971,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 			if (dst < gpBufEnd)
 				break;
 			j = 8;
@@ -910,9 +989,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 			--i;
 		} while (i);
 		break;
@@ -989,9 +1070,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 			if (!--xx_32)
 				return;
 		}
@@ -1036,9 +1119,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 		if (!xx_32)
 				break;
 		}
@@ -1082,9 +1167,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 		yy_32 += 2;
 		} while (yy_32 != 32);
@@ -1129,9 +1216,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 		if (!xx_32)
 				break;
@@ -1176,9 +1265,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 			yy_32 += 2;
 		} while (yy_32 != 32);
@@ -1224,9 +1315,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 		if (!xx_32)
 				break;
@@ -1246,9 +1339,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	if (dst < gpBufEnd)
 				break;
@@ -1263,9 +1358,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	--i;
 		} while (i);
@@ -1310,9 +1407,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	if (!xx_32)
 				break;
@@ -1333,9 +1432,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	if (dst < gpBufEnd)
 				break;
@@ -1350,9 +1451,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 --i;
 		} while (i);
@@ -1404,9 +1507,11 @@ void __fastcall drawBottomArchesUpperScreen(unsigned char *pbDst, unsigned int *
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	--gpDrawMask;
 				--xx_32;
@@ -1450,9 +1555,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 --gpDrawMask;
 				--xx_32;
@@ -1480,9 +1587,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				xx_32 -= 2;
+#endif
+				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
 					do {
@@ -1507,9 +1616,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	yy_32 += 2;
 					} while (yy_32 != 32);
@@ -1534,9 +1645,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -1558,9 +1671,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 						yy_32 += 2;
 					} while (yy_32 != 32);
@@ -1590,9 +1705,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -1615,9 +1732,11 @@ xx_32 -= 2;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						--gpDrawMask;
+#endif
+						--gpDrawMask;
 						--yy_32;
 					} while (yy_32);
 					return;
@@ -1641,9 +1760,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -1667,9 +1788,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	--gpDrawMask;
 						--yy_32;
@@ -1697,9 +1820,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	--gpDrawMask;
 					--xx_32;
@@ -1733,9 +1858,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	--gpDrawMask;
 					--xx_32;
@@ -1751,9 +1878,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -1768,9 +1897,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 		yy_32 += 2;
 						} while (yy_32 != 32);
@@ -1787,9 +1918,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -1803,9 +1936,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 							yy_32 += 2;
 						} while (yy_32 != 32);
@@ -1823,9 +1958,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -1840,9 +1977,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						
+#endif
+						
 
 	--gpDrawMask;
 							--yy_32;
@@ -1860,9 +1999,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -1877,9 +2018,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							
+#endif
+							
 
 --gpDrawMask;
 							--yy_32;
@@ -1920,9 +2063,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	--gpDrawMask;
 			--xx_32;
@@ -1966,9 +2111,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 --gpDrawMask;
 			--xx_32;
@@ -1994,9 +2141,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				yy_32 = 2;
@@ -2020,9 +2169,11 @@ if (!xx_32) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 				yy_32 += 2;
 				} while (yy_32 != 32);
@@ -2050,9 +2201,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				yy_32 = 2;
@@ -2075,9 +2228,11 @@ if (!xx_32) {
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 					yy_32 += 2;
 				} while (yy_32 != 32);
@@ -2107,9 +2262,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				gpDrawMask -= 16;
@@ -2130,9 +2287,11 @@ if (!xx_32) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	--gpDrawMask;
 					--yy_32;
@@ -2161,9 +2320,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				gpDrawMask -= 16;
@@ -2184,9 +2345,11 @@ if (!xx_32) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					--gpDrawMask;
+#endif
+					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
 				return;
@@ -2256,9 +2419,11 @@ void __fastcall drawUpperScreen(unsigned char *pbDst)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	--i;
 			} while (i);
@@ -2307,9 +2472,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 --xx_32;
 			} while (xx_32);
@@ -2336,9 +2503,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				xx_32 -= 2;
+#endif
+				xx_32 -= 2;
 				if (xx_32 < 0) {
 					yy_32 = 2;
 					do {
@@ -2363,9 +2532,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	yy_32 += 2;
 					} while (yy_32 != 32);
@@ -2390,9 +2561,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -2414,9 +2587,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 						yy_32 += 2;
 					} while (yy_32 != 32);
@@ -2446,9 +2621,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -2467,9 +2644,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						
+#endif
+						
 
 --i;
 					} while (i);
@@ -2494,9 +2673,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 				if (xx_32 < 0) {
@@ -2515,9 +2696,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						--i;
+#endif
+						--i;
 					} while (i);
 					return;
 				}
@@ -2542,9 +2725,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					--xx_32;
+#endif
+					--xx_32;
 				} while (xx_32);
 				break;
 			case 1: // upper (solid), with lighting
@@ -2572,9 +2757,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					--xx_32;
+#endif
+					--xx_32;
 				} while (xx_32);
 				break;
 			case 2: // upper (solid), with lighting
@@ -2587,9 +2774,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					xx_32 -= 2;
+#endif
+					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
 						do {
@@ -2602,9 +2791,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							yy_32 += 2;
+#endif
+							yy_32 += 2;
 						} while (yy_32 != 32);
 						return;
 					}
@@ -2619,10 +2810,12 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 
 #endif
+
 					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 2;
@@ -2635,10 +2828,12 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 
 #endif
+
 
 							yy_32 += 2;
 						} while (yy_32 != 32);
@@ -2656,9 +2851,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					xx_32 -= 2;
+#endif
+					xx_32 -= 2;
 					if (xx_32 < 0) {
 						yy_32 = 16;
 						do {
@@ -2669,9 +2866,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							--yy_32;
+#endif
+							--yy_32;
 						} while (yy_32);
 						return;
 					}
@@ -2686,10 +2885,12 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 
 #endif
+
 
 					xx_32 -= 2;
 					if (xx_32 < 0) {
@@ -2702,9 +2903,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif							--yy_32;
+#endif
+							--yy_32;
 						} while (yy_32);
 						return;
 					}
@@ -2739,9 +2942,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			--i;
+#endif
+			--i;
 		} while (i);
 		break;
 	case 1: // upper (solid), black
@@ -2787,9 +2992,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			--xx_32;
+#endif
+			--xx_32;
 		} while (xx_32);
 		break;
 	case 2: // upper (solid), black
@@ -2812,9 +3019,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				yy_32 = 2;
@@ -2838,9 +3047,11 @@ if (!xx_32) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	yy_32 += 2;
 				} while (yy_32 != 32);
@@ -2868,9 +3079,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	if (!xx_32) {
 				yy_32 = 2;
@@ -2893,9 +3106,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 
 					yy_32 += 2;
@@ -2926,9 +3141,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif		
+#endif
+		
 
 	if (!xx_32) {
 				i = 16;
@@ -2945,9 +3162,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	--i;
 				} while (i);
@@ -2975,9 +3194,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!xx_32) {
 				i = 16;
@@ -2994,9 +3215,11 @@ if (!xx_32) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 --i;
 				} while (i);
@@ -3063,9 +3286,11 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 if (dst < gpBufEnd) {
 					j = 8;
@@ -3083,9 +3308,11 @@ if (dst < gpBufEnd) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	--i;
 			} while (i);
@@ -3110,9 +3337,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						
+#endif
+						
 
 if (!--xx_32)
 							return;
@@ -3220,9 +3449,11 @@ if (!--xx_32)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				if (!xx_32)
+#endif
+				if (!xx_32)
 					break;
 			}
 			yy_32 = 2;
@@ -3268,9 +3499,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	yy_32 += 2;
 			} while (yy_32 != 32);
@@ -3318,9 +3551,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				if (!xx_32)
+#endif
+				if (!xx_32)
 					break;
 				dst += xx_32;
 			}
@@ -3366,9 +3601,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 
 				yy_32 += 2;
@@ -3418,9 +3655,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				if (!xx_32)
+#endif
+				if (!xx_32)
 					break;
 			}
 			i = 8;
@@ -3441,9 +3680,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	if (dst < gpBufEnd) {
 					j = 8;
@@ -3461,9 +3702,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				--i;
+#endif
+				--i;
 			} while (i);
 			break;
 		default: // lower (top transparent), black
@@ -3509,9 +3752,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				if (!xx_32)
+#endif
+				if (!xx_32)
 					break;
 				dst += xx_32;
 			}
@@ -3533,9 +3778,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	if (dst < gpBufEnd) {
 					j = 8;
@@ -3553,9 +3800,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	--i;
 			} while (i);
@@ -3581,9 +3830,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 if (dst < gpBufEnd) {
 					asm_trans_light_square_0_2(8, tbl, &dst, &src);
@@ -3595,9 +3846,11 @@ if (dst < gpBufEnd) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 --i;
 			} while (i);
@@ -3636,9 +3889,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	--xx_32;
 			} while (xx_32);
@@ -3653,10 +3908,12 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 #endif
 
+
 #ifdef RESOLUTION_1366x768
 					dst = pbDst - WorkingWidth * 16;
 					;
 #endif
+
 
 					src += 288;
 				LABEL_98:
@@ -3685,9 +3942,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif						yy_32 += 2;
+#endif
+						yy_32 += 2;
 					} while (yy_32 != 32);
 					return;
 				}
@@ -3711,9 +3970,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -3728,9 +3989,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 #endif
 
+
 #ifdef RESOLUTION_1366x768
 					dst = pbDst - WorkingWidth * 16;
 #endif
+
 
 					src += 288;
 				LABEL_154:
@@ -3758,9 +4021,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 
 						yy_32 += 2;
@@ -3788,9 +4053,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 xx_32 -= 2;
 			} while (xx_32 >= 0);
 			goto LABEL_154;
@@ -3804,9 +4071,11 @@ xx_32 -= 2;
 					dst = pbDst - 12288;
 				#endif
 
+
 				#ifdef RESOLUTION_1366x768
 					dst = pbDst - WorkingWidth * 16;
-				#endif src += 288;
+				#endif
+ src += 288;
 
 				LABEL_210:
 					i = 8;
@@ -3821,9 +4090,11 @@ xx_32 -= 2;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	if (dst < gpBufEnd) {
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
@@ -3835,9 +4106,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	--i;
 					} while (i);
@@ -3863,9 +4136,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 	xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -3880,9 +4155,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 					src += 288;
 				LABEL_249:
 					i = 8;
@@ -3897,9 +4174,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	if (dst < gpBufEnd) {
 							asm_trans_light_square_0_2(8, tbl, &dst, &src);
@@ -3911,9 +4190,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 	--i;
 					} while (i);
@@ -3938,9 +4219,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -3972,9 +4255,11 @@ LABEL_11:
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (dst < gpBufEnd) {
 				j = 8;
@@ -3993,9 +4278,11 @@ if (dst < gpBufEnd) {
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 --i;
 		} while (i);
@@ -4080,9 +4367,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 if (!--xx_32)
 				return;
@@ -4097,9 +4386,11 @@ if (!--xx_32)
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_308:
 				yy_32 = 2;
@@ -4156,9 +4447,11 @@ if (!--xx_32)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	yy_32 += 2;
 				} while (yy_32 != 32);
@@ -4212,9 +4505,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif			
+#endif
+			
 
 xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -4265,9 +4560,11 @@ xx_32 -= 2;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -4277,9 +4574,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 		src += 288;
 	LABEL_336:
 		yy_32 = 2;
@@ -4326,9 +4625,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 			yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
@@ -4342,9 +4643,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_364:
 				i = 8;
@@ -4366,9 +4669,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif				
+#endif
+				
 
 	if (dst < gpBufEnd) {
 						j = 8;
@@ -4387,9 +4692,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
-#endif					
+#endif
+					
 
 --i;
 				} while (i);
@@ -4443,9 +4750,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 		
 		
 			xx_32 -= 2;
@@ -4461,9 +4770,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_389:
 				i = 8;
@@ -4485,9 +4796,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 					if (dst < gpBufEnd) {
 						j = 8;
 						do {
@@ -4505,9 +4818,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 					--i;
 				} while (i);
 				return;
@@ -4551,9 +4866,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -4609,9 +4926,11 @@ void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 					--gpDrawMask;
 					--yy_32;
 				} while (yy_32);
@@ -4657,9 +4976,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 					--gpDrawMask;
 					--xx_32;
 				} while (xx_32);
@@ -4688,9 +5009,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 					if (!i)
 						break;
 				}
@@ -4718,9 +5041,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					i += 2;
 				} while (i != 32);
@@ -4748,9 +5073,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -4779,9 +5106,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[i - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[i - WorkingWidth - 32];
 #endif
+
 
 
 
@@ -4815,9 +5144,11 @@ dst = &dst[i - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -4843,9 +5174,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--yy_32;
@@ -4874,9 +5207,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -4903,9 +5238,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--yy_32;
@@ -4932,9 +5269,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--yy_32;
@@ -4971,9 +5310,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--xx_32;
@@ -4988,9 +5329,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_62:
 						yy_32 = 2;
@@ -5012,9 +5355,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 						} while (yy_32 != 32);
 						return;
@@ -5032,9 +5377,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -5048,9 +5395,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_80:
 						yy_32 = 2;
@@ -5071,9 +5420,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 							yy_32 += 2;
 						} while (yy_32 != 32);
@@ -5091,9 +5442,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -5107,9 +5460,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_98:
 						gpDrawMask -= 16;
@@ -5125,9 +5480,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 							--gpDrawMask;
@@ -5148,9 +5505,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 					xx_32 -= 2;
@@ -5165,9 +5524,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_117:
 						gpDrawMask -= 16;
@@ -5184,9 +5545,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 							--gpDrawMask;
 							--yy_32;
@@ -5205,9 +5568,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -5248,9 +5613,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			--gpDrawMask;
 			--yy_32;
@@ -5297,9 +5664,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			--gpDrawMask;
 			--xx_32;
@@ -5314,9 +5683,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_162:
 				yy_32 = 2;
@@ -5349,9 +5720,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					yy_32 += 2;
 				} while (yy_32 != 32);
@@ -5382,9 +5755,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 			xx_32 -= 2;
@@ -5416,9 +5791,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -5428,9 +5805,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 		src += 288;
 	LABEL_180:
 		yy_32 = 2;
@@ -5458,9 +5837,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 			yy_32 += 2;
 		} while (yy_32 != 32);
 		break;
@@ -5473,9 +5854,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_198:
 				gpDrawMask -= 16;
@@ -5500,9 +5883,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--yy_32;
@@ -5534,9 +5919,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -5550,9 +5937,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_217:
 				gpDrawMask -= 16;
@@ -5578,9 +5967,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--gpDrawMask;
 					--yy_32;
@@ -5607,9 +5998,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -5679,9 +6072,11 @@ void __fastcall drawLowerScreen(unsigned char *pbDst)
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 					--i;
@@ -5734,9 +6129,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 					--xx_32;
@@ -5766,9 +6163,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -5797,9 +6196,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					i += 2;
 				} while (i != 32);
@@ -5827,9 +6228,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -5858,9 +6261,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[i - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[i - WorkingWidth - 32];
 #endif
+
 
 
 
@@ -5894,9 +6299,11 @@ dst = &dst[i - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -5918,9 +6325,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 					--i;
@@ -5949,9 +6358,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					if (!i)
 						break;
@@ -5974,9 +6385,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--i;
 				} while (i);
@@ -6002,9 +6415,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--xx_32;
 				} while (xx_32);
@@ -6033,9 +6448,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 					--xx_32;
@@ -6050,9 +6467,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_68:
 						yy_32 = 2;
@@ -6074,9 +6493,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 
 						} while (yy_32 != 32);
@@ -6095,9 +6516,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -6111,9 +6534,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_83:
 						yy_32 = 2;
@@ -6133,9 +6558,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[yy_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[yy_32 - WorkingWidth - 32];
 #endif
+
 
 							yy_32 += 2;
 						} while (yy_32 != 32);
@@ -6153,9 +6580,11 @@ dst = &dst[yy_32 - WorkingWidth - 32];
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -6169,9 +6598,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_100:
 						i = 16;
@@ -6186,9 +6617,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 							--i;
 						} while (i);
@@ -6207,9 +6640,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -6223,9 +6658,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 						src += 288;
 					LABEL_116:
 						j = 16;
@@ -6240,9 +6677,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 							--j;
 						} while (j);
@@ -6260,9 +6699,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 					xx_32 -= 2;
 				} while (xx_32 >= 0);
@@ -6300,9 +6741,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			--i;
 		} while (i);
@@ -6356,9 +6799,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			--xx_32;
 		} while (xx_32);
@@ -6372,9 +6817,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_153:
 				yy_32 = 2;
@@ -6408,9 +6855,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 				} while (yy_32 < 32);
 				return;
@@ -6440,9 +6889,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -6473,9 +6924,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 				xx_32 -= 2;
 			} while (xx_32 >= 0);
@@ -6485,9 +6938,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 		src += 288;
 	LABEL_171:
 		yy_32 = 2;
@@ -6517,9 +6972,11 @@ dst = &dst[xx_32 - WorkingWidth - 32];
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 		} while (yy_32 < 32);
 		break;
@@ -6532,9 +6989,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_189:
 				i = 16;
@@ -6555,9 +7014,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--i;
 				} while (i);
@@ -6588,9 +7049,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -6604,9 +7067,11 @@ dst -= WorkingWidth + 32;
 					dst = pbDst - 12288;
 					#endif
 
+
 					#ifdef RESOLUTION_1366x768 
 					dst = pbDst - WorkingWidth * 16;
 					#endif
+
 				src += 288;
 			LABEL_205:
 				i = 16;
@@ -6627,9 +7092,11 @@ dst -= WorkingWidth + 32;
 dst -= 800;
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst -= WorkingWidth + 32;
 #endif
+
 
 					--i;
 				} while (i);
@@ -6655,9 +7122,11 @@ dst -= WorkingWidth + 32;
 dst = &dst[xx_32 - 800];
 #endif
 
+
 #ifdef RESOLUTION_1366x768 
 dst = &dst[xx_32 - WorkingWidth - 32];
 #endif
+
 
 			xx_32 -= 2;
 		} while (xx_32 >= 0);
@@ -6689,10 +7158,12 @@ void __fastcall world_draw_black_tile(unsigned char *pbDst)
 		dst = &dst[xx_32 - 832];
 	#endif
 
+
 	#ifdef RESOLUTION_1366x768 
 	dst = &dst[xx_32 - (WorkingWidth + 64)];
 
 	#endif
+
 	
 		if (!xx_32)
 			break;
@@ -6712,9 +7183,11 @@ void __fastcall world_draw_black_tile(unsigned char *pbDst)
 		dst = &dst[yy_32 - 832];
 		#endif
 
+
 		#ifdef RESOLUTION_1366x768 
 		dst = &dst[xx_32 - (WorkingWidth + 64)];
 		#endif
+
 
 
 	
@@ -6723,3 +7196,4 @@ void __fastcall world_draw_black_tile(unsigned char *pbDst)
 	} while (yy_32 != 32);
 }
 #endif
+

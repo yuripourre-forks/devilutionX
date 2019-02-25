@@ -31,8 +31,8 @@ int SCREEN_HEIGHT = 480;
 #endif
 
 #ifdef RESOLUTION_1366x768 
-int SCREEN_WIDTH = 640;
-int SCREEN_HEIGHT = 480;
+int SCREEN_WIDTH = 1366;
+int SCREEN_HEIGHT = 768;
 #endif
 
 

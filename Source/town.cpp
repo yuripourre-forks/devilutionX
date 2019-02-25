@@ -1096,7 +1096,20 @@ void __fastcall T_DrawGame(int x, int y)
 	v4 = ScrollInfo._syoff + 175;
 	dword_5C2FF8 = 10;
 	a5 = 10;
+	#ifdef RESOLUTION_640x480 
 	scr_pix_width = 640;
+#endif
+
+#ifdef RESOLUTION_1366x768 
+	scr_pix_width = WorkingWidth;
+
+#endif
+
+
+
+
+
+
 	scr_pix_height = 352;
 	dword_5C2FFC = 11;
 	v11 = 5;
@@ -1336,8 +1349,24 @@ LABEL_24:
 			v13 += 2;
 			--v15;
 		} while (v15);
+
+		#ifdef RESOLUTION_640x480 
 		v12 += -v19 - 768;
 		v17 = 2 * (v19 + 768);
+#endif
+
+#ifdef RESOLUTION_1366x768 
+		v12 += -v19 - WorkingWidth;
+		v17 = 2 * (v19 + WorkingWidth);
+
+#endif
+
+
+
+
+
+
+
 		v13 -= v17;
 		v11 = (_WORD *)((char *)v11 - v17);
 		--v14;
@@ -1355,8 +1384,10 @@ void __fastcall T_DrawView(int StartX, int StartY)
 {
 	light_table_index = 0;
 	cel_transparency_active = 0;
-	if (zoomflag)
+	if (zoomflag){
+
 		T_DrawGame(StartX, StartY);
+	}
 	else
 		T_DrawZoom(StartX, StartY);
 	if (automapflag)

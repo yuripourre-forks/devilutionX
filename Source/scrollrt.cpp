@@ -3112,7 +3112,19 @@ void __fastcall scrollrt_draw_game_screen(BOOL draw_cursor)
 
 	if (drawpanflag == 255) {
 		drawpanflag = 0;
+		
+		#ifdef RESOLUTION_640x480 
 		dwHgt = 480;
+		#endif
+
+		#ifdef RESOLUTION_1366x768 
+		dwHgt = 768;
+		#endif
+
+
+
+
+
 	} else {
 		dwHgt = 0;
 	}
@@ -3592,13 +3604,13 @@ dwHgt = 768;
 			DrawInvBelt();
 		if (talkflag) {
 			DrawTalkPan();
-			#ifdef RESOLUTION_640x480 
-dwHgt = 480;
-#endif
+	#ifdef RESOLUTION_640x480 
+	dwHgt = 480;
+	#endif
 
-#ifdef RESOLUTION_1366x768 
-dwHgt = 768;
-#endif
+	#ifdef RESOLUTION_1366x768 
+	dwHgt = 768;
+	#endif
 
 
 

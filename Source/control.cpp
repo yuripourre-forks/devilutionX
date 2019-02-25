@@ -83,6 +83,8 @@ const unsigned char fontkern[68] = {
 	4, 4, 9, 6, 6, 12, 3, 7
 };
 const int lineoffset[25] = {
+	#ifdef RESOLUTION_640x480 
+
 	768 * 594 + 241,
 	768 * 32,
 	768 * 32,
@@ -108,6 +110,47 @@ const int lineoffset[25] = {
 	768 * 594 + 241,
 	768 * 606 + 241,
 	768 * 617 + 241
+
+#endif
+
+
+
+
+
+#ifdef RESOLUTION_1366x768 
+
+
+        WorkingWidth * 594 + 241,//456433,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0,//24756,
+        WorkingWidth * 582 + 241,//447217,
+        WorkingWidth * 606 + 241,//465649,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0 ,//24576,
+        WorkingWidth * 576 + 241,//442609,
+        WorkingWidth * 594 + 241,//456433,
+        WorkingWidth * 612 + 241 ,//470257,
+        WorkingWidth * 32 + 0,//24576,
+        WorkingWidth * 32 + 0,//24576,
+  WorkingWidth * 572 + 241,//439537,
+  WorkingWidth * 587 + 241,//451057,
+  WorkingWidth * 601 + 241,//461809,
+  WorkingWidth * 616 + 241 ,//473329,
+  WorkingWidth * 32 + 0,//24576,
+  WorkingWidth * 570 + 241,//438001,
+  WorkingWidth * 582 + 241,//447217,
+  WorkingWidth * 594 + 241,//456433,
+  WorkingWidth * 606 + 241 ,//465649,
+  WorkingWidth * 617 + 241//474097
+
+#endif
+
+
+
+
 };
 const unsigned char fontidx[256] = {
 	0, 1, 1, 1, 1, 1, 1, 1, 1, 1,

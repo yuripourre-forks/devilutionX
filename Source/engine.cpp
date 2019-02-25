@@ -181,7 +181,18 @@ void __fastcall CelDecDatLightOnly(char *pDecodeTo, char *pRLEBytes, int frame_c
 				v7 -= v8;
 			} while (v7);
 		LABEL_9:
+
+		#ifdef RESOLUTION_640x480 
 			v5 += -frame_width - 768;
+
+#endif
+
+#ifdef RESOLUTION_1366x768 
+			v5 += -frame_width - WorkingWidth;
+
+#endif
+
+
 		} while (v6 != v4);
 	}
 }
@@ -1331,6 +1342,9 @@ void __fastcall DrawLine(int x0, int y0, int x1, int y1, UCHAR col)
 	v9 = x0;
 	gbPixelCol = col;
 	dword_52B99C = 0;
+
+
+	#ifdef RESOLUTION_640x480 // temp maybe needs removing
 	if (x0 < 64 || x0 >= 704)
 		dword_52B99C = 1;
 	if (x1 < 64 || x1 >= 704)
@@ -1344,6 +1358,28 @@ void __fastcall DrawLine(int x0, int y0, int x1, int y1, UCHAR col)
 	else
 		v36 = 1;
 	v11 = v36 * (x1 - x0);
+	#endif
+
+	#ifdef RESOLUTION_1366x768  // temp maybe? needs removing
+	if (x0 < 64 || x0 >= (WorkingWidth - 64))
+		dword_52B99C = 1;
+	if (x1 < 64 || x1 >= (WorkingWidth - 64))
+		dword_52B99C = 1;
+	if (y0 < 160 || y0 >= (SCREEN_HEIGHT + 32))
+		dword_52B99C = 1;
+	if (y1 < 160 || y1 >= (SCREEN_HEIGHT + 32))
+		dword_52B99C = 1;
+	if (x1 - x0 < 0)
+		v36 = -1;
+	else
+		v36 = 1;
+	v11 = v36 * (x1 - x0);
+	#endif
+
+
+
+
+
 	if (y1 - y0 < 0)
 		v35 = -1;
 	else
