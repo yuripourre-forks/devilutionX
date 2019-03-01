@@ -1,0 +1,8 @@
+/home/krash/works/devilutionX/build32/CMakeFiles/rebuild_cache.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/devilution.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/devilution_unity.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/clean_cotire.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/edit_cache.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/all_unity.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/devilution_pch.dir
+/home/krash/works/devilutionX/build32/CMakeFiles/all_pch.dir

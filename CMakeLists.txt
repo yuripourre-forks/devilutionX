@@ -30,12 +30,12 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
-if($ENV{FORCE32})
-    if(NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
-        message(WARNING "sizeof(void*) == ${CMAKE_SIZEOF_VOID_P}.")
-        message(FATAL_ERROR [[32-bit mode was requested but pointer size is not 32 bits.]])
-    endif()
-endif()
+#if($ENV{FORCE32})
+#    if(NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
+#        message(WARNING "sizeof(void*) == ${CMAKE_SIZEOF_VOID_P}.")
+#        message(FATAL_ERROR [[32-bit mode was requested but pointer size is not 32 bits.]])
+#    endif()
+#endif()
 
 # Note: In Debug mode, GCC generates spurious memory references that upset Valgrind,
 # these options fix that.
