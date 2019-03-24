@@ -1842,6 +1842,9 @@ void __fastcall LoadGameLevel(BOOL firstflag, int lvldir)
 		IncProgress();
 	}
 
+	MakeTransTable();
+	IncProgress();
+
 	SyncPortals();
 
 	for (i = 0; i < MAX_PLRS; i++) {

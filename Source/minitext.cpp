@@ -88,11 +88,7 @@ void __cdecl DrawQTextBack()
 {
 	CelDecodeOnly(88, 487, (BYTE *)pTextBoxCels, 1, 591);
 
-#define TRANS_RECT_X 27
-#define TRANS_RECT_Y 28
-#define TRANS_RECT_WIDTH 585
-#define TRANS_RECT_HEIGHT 297
-#include "asm_trans_rect.inc"
+	trans_rect(27,28,585,297);
 }
 
 void __fastcall PrintQTextChr(int sx, int sy, BYTE *pCelBuff, int nCel)

@@ -13,24 +13,60 @@ BYTE *gpDrawTbl = NULL;
 // char world_4B326D[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 unsigned int RightMask[32] = {
-	0xEAAAAAAA, 0xF5555555, 0xFEAAAAAA, 0xFF555555, 0xFFEAAAAA, 0xFFF55555, 0xFFFEAAAA, 0xFFFF5555,
-	0xFFFFEAAA, 0xFFFFF555, 0xFFFFFEAA, 0xFFFFFF55, 0xFFFFFFEA, 0xFFFFFFF5, 0xFFFFFFFE, 0xFFFFFFFF,
-	0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-	0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
+	0xE0000000, 0xF0000000,
+	0xFE000000, 0xFF000000,
+	0xFFE00000, 0xFFF00000,
+	0xFFFE0000, 0xFFFF0000,
+	0xFFFFE000, 0xFFFFF000,
+	0xFFFFFE00, 0xFFFFFF00,
+	0xFFFFFFE0, 0xFFFFFFF0,
+	0xFFFFFFFE, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF
 };
 
 unsigned int LeftMask[32] = {
-	0xAAAAAAAB, 0x5555555F, 0xAAAAAABF, 0x555555FF, 0xAAAAABFF, 0x55555FFF, 0xAAAABFFF, 0x5555FFFF,
-	0xAAABFFFF, 0x555FFFFF, 0xAABFFFFF, 0x55FFFFFF, 0xABFFFFFF, 0x5FFFFFFF, 0xBFFFFFFF, 0xFFFFFFFF,
-	0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-	0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
+	0x00000003, 0x0000000F,
+	0x0000003F, 0x000000FF,
+	0x000003FF, 0x00000FFF,
+	0x00003FFF, 0x0000FFFF,
+	0x0003FFFF, 0x000FFFFF,
+	0x003FFFFF, 0x00FFFFFF,
+	0x03FFFFFF, 0x0FFFFFFF,
+	0x3FFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF,
+	0xFFFFFFFF, 0xFFFFFFFF
 };
 
 unsigned int WallMask[32] = {
-	0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555,
-	0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555,
-	0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555,
-	0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555, 0xAAAAAAAA, 0x55555555
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000
 };
 
 int WorldTbl3x16[48] = {
@@ -85,17 +121,26 @@ __inline void __fastcall CopyLine(BYTE **dst, BYTE **src, int w)
 	unsigned int mask;
 
 	if (gpDrawMask != NULL) {
-		mask = *gpDrawMask--;
-	} 
+		mask = *gpDrawMask;
+		gpDrawMask--;
+	}
 	for (i = 0; i < w; i++, (*src)++, (*dst)++, mask <<= 1) {
-		if (gpDrawMask != NULL && !(mask & 0x80000000))
-			continue;
-		if (light_table_index == lightmax) {
-			(*dst)[0] = 0;
-		} else if (gpDrawTbl) {
-			(*dst)[0] = gpDrawTbl[(*src)[0]];
+		if (gpDrawMask != NULL && !(mask & 0x80000000)) {
+			if (light_table_index == lightmax) {
+				(*dst)[0] = pTransTbl[0][(*dst)[0]];
+			} else if (gpDrawTbl) {
+				(*dst)[0] = pTransTbl[gpDrawTbl[(*src)[0]]][(*dst)[0]];
+			} else {
+				(*dst)[0] = pTransTbl[(*src)[0]][(*dst)[0]];
+			}
 		} else {
-			(*dst)[0] = (*src)[0];
+			if (light_table_index == lightmax) {
+				(*dst)[0] = 0;
+			} else if (gpDrawTbl) {
+				(*dst)[0] = gpDrawTbl[(*src)[0]];
+			} else {
+				(*dst)[0] = (*src)[0];
+			}
 		}
 	}
 }
@@ -239,6 +284,19 @@ void __fastcall world_draw_black_tile(BYTE *pBuff)
 		for (k = 0; k < 4 * j; k++)
 			*dst++ = 0;
 		dst += i;
+	}
+}
+
+void __fastcall trans_rect(int x, int y, int w, int h)
+{
+	int row, col;
+	BYTE *dst = &gpBuffer[SCREENXY(x, y)];
+	for (row = 0; row < h; row++) {
+		for (col = 0; col < w; col++) {
+			*dst = pTransTbl[0][*dst];
+			dst++;
+		}
+		dst += ROW_PITCH - w;
 	}
 }
 

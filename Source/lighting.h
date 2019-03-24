@@ -14,6 +14,7 @@ extern int dolighting;            // weak
 extern char dung_map_rgba[16384]; /* int [64][64] short [64][128] char [64][256] */
 extern int visionid;
 extern char *pLightTbl; /* todo: struct? */
+extern char pTransTbl[256][256];
 extern BOOL lightflag;
 
 void __fastcall SetLightFX(int *x, int *y, short *s_r, short *s_g, PINT_PTR s_b, PINT_PTR d_r, int *d_g, int *d_b);
@@ -23,6 +24,7 @@ void __fastcall DoUnVision(int nXPos, int nYPos, int nRadius);
 void __fastcall DoVision(int nXPos, int nYPos, int nRadius, unsigned char doautomap, int visible);
 void __cdecl FreeLightTable();
 void __cdecl InitLightTable();
+void __cdecl MakeTransTable();
 void __cdecl MakeLightTable();
 #ifdef _DEBUG
 void __cdecl ToggleLighting();

@@ -9,6 +9,7 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst);
 void __fastcall drawBottomArchesLowerScreen(unsigned char *pbDst, unsigned int *pMask);
 void __fastcall drawLowerScreen(unsigned char *pbDst);
 void __fastcall world_draw_black_tile(unsigned char *pbDst);
+void __fastcall trans_rect(int x, int y, int w, int h);
 
 /* rdata */
 

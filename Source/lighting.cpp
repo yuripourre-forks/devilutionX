@@ -16,6 +16,7 @@ int dolighting;            // weak
 char dung_map_rgba[16384]; /* int [64][64] short [64][128] char [64][256] */
 int visionid;
 char *pLightTbl; /* todo: struct? */
+char pTransTbl[256][256];
 BOOL lightflag;
 
 char CrawlTable[2749] = {
@@ -952,6 +953,31 @@ void __cdecl FreeLightTable()
 void __cdecl InitLightTable()
 {
 	pLightTbl = (char *)DiabloAllocPtr(LIGHTSIZE);
+}
+
+void __cdecl MakeTransTable()
+{
+	int i, j, k, distance, newDistance;
+	PALETTEENTRY blended;
+
+	for (i = 0; i < 256; i++) {
+		for (j = 0; j < 256; j++) {
+			distance = 0x7FFFFFFF;
+			blended.peRed = (orig_palette[i].peRed + orig_palette[j].peRed) / 2;
+			blended.peGreen = (orig_palette[i].peGreen + orig_palette[j].peGreen) / 2;
+			blended.peBlue = (orig_palette[i].peBlue + orig_palette[j].peBlue) / 2;
+			for (k = 0; k < 256; k++) {
+				int r = orig_palette[k].peRed - blended.peRed;
+				int g = orig_palette[k].peGreen - blended.peGreen;
+				int b = orig_palette[k].peBlue - blended.peBlue;
+				newDistance = r * r + g * g + b * b;
+				if (distance > newDistance) {
+					distance = newDistance;
+					pTransTbl[i][j] = k;
+				}
+			}
+		}
+	}
 }
 
 void __cdecl MakeLightTable()

@@ -151,11 +151,7 @@ void __cdecl DrawSTextBack()
 {
 	CelDecodeOnly(408, 487, (BYTE *)pSTextBoxCels, 1, 271);
 
-#define TRANS_RECT_X 347
-#define TRANS_RECT_Y 28
-#define TRANS_RECT_WIDTH 265
-#define TRANS_RECT_HEIGHT 297
-#include "asm_trans_rect.inc"
+	trans_rect(347, 28, 265, 297);
 }
 
 void __fastcall PrintSString(int x, int y, unsigned char cjustflag, char *str, int col, int val)

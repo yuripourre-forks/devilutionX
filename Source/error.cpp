@@ -121,11 +121,7 @@ void __cdecl DrawDiabloMsg()
 		--v1;
 	} while (v1);
 
-#define TRANS_RECT_X 104
-#define TRANS_RECT_Y 150
-#define TRANS_RECT_WIDTH 432
-#define TRANS_RECT_HEIGHT 54
-#include "asm_trans_rect.inc"
+	trans_rect(104,150,432,54);
 
 	strcpy(tempstr, MsgStrings[msgflag]);
 	v8 = screen_y_times_768[342] + 165;
