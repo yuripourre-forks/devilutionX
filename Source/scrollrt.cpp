@@ -2596,7 +2596,7 @@ void __fastcall scrollrt_draw_game_screen(BOOL draw_cursor)
 {
 	int dwHgt; // edi
 
-	if (drawpanflag == 255) {
+	if (1 || drawpanflag == 255) { /* Simplify render for GPU */
 		drawpanflag = 0;
 		dwHgt = 480;
 	} else {
@@ -2947,7 +2947,7 @@ void __cdecl DrawAndBlit()
 	int dwHgt;       // edi
 
 	if (gbRunGame) {
-		if (drawpanflag == 255) {
+		if (1 || drawpanflag == 255) { /* Simplify render for GPU */
 			drawhpflag = TRUE;
 			drawmanaflag = TRUE;
 			drawbtnflag = 1;
