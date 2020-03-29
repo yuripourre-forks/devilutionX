@@ -14,6 +14,10 @@ extern BOOL UniqueItemFlag[128];
 extern int numitems;
 extern int gnNumGetRecords;
 
+const char *translatePrefix(const char *pref, char *itemName);
+const char *translateName(char *itemName);
+const char *translateSuffix(const char *suff);
+
 void InitItemGFX();
 BOOL ItemPlace(int xp, int yp);
 void AddInitItems();

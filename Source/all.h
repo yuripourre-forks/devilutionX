@@ -2,6 +2,12 @@
 #define __ALL_H__
 
 #include <SDL.h>
+#include <string>
+#include <map>
+#include <vector>
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
 #ifdef USE_SDL1
 #include "sdl2_to_1_2_backports.h"

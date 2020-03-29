@@ -1181,7 +1181,8 @@ void DrawInfoBox()
 			if (plr[myplr].HoldItem._iIdentified)
 				strcpy(infostr, plr[myplr].HoldItem._iIName);
 			else
-				strcpy(infostr, plr[myplr].HoldItem._iName);
+				//strcpy(infostr, plr[myplr].HoldItem._iName);
+				strcpy(infostr, translateName(plr[myplr].HoldItem._iName));
 			if (plr[myplr].HoldItem._iMagical == ITEM_QUALITY_MAGIC)
 				infoclr = COL_BLUE;
 			if (plr[myplr].HoldItem._iMagical == ITEM_QUALITY_UNIQUE)

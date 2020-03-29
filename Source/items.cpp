@@ -14,6 +14,177 @@ BOOL UniqueItemFlag[128];
 int numitems;
 int gnNumGetRecords;
 
+bool translated = false;
+struct translatedName {
+	std::string translatedName;
+	int gender;
+};
+
+std::map<std::string, translatedName> names;
+std::map<std::string, std::vector<std::string>> prefixes;
+std::map<std::string, std::string> suffixes;
+
+std::vector<std::string> split(const std::string &str, char delim)
+{
+	std::vector<std::string> strings;
+	size_t start;
+	size_t end = 0;
+	while ((start = str.find_first_not_of(delim, end)) != std::string::npos) {
+		end = str.find(delim, start);
+		strings.push_back(str.substr(start, end - start));
+	}
+	return strings;
+}
+
+int strToNum(std::string str)
+{
+	std::istringstream ss(str);
+	int n;
+	ss >> n;
+	return n;
+}
+
+void addName(std::string n, std::string tn, int gender)
+{
+	translatedName tmp;
+	tmp.translatedName = tn;
+	tmp.gender = gender;
+	names[n] = tmp;
+}
+
+void addPrefix(std::string n, std::vector<std::string> prefixNames)
+{
+	prefixes[n] = prefixNames;
+}
+
+void addSuffix(std::string n, std::string suffixName)
+{
+	suffixes[n] = suffixName;
+}
+
+bool addNames(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_names.txt";
+	SDL_Log("OPENING NAME FILE");
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			SDL_Log("LOG LINE %s", line.c_str());
+			std::vector<std::string> chunks = split(line, ',');
+			if (chunks.size() != 3) {
+				SDL_Log("WRONG CHUNKS SIZE");
+				return false;
+			}
+			addName(chunks[0], chunks[1], strToNum(chunks[2]));
+			addName(chunks[1], chunks[1], strToNum(chunks[2]));
+			SDL_Log("ADDING NAMES %s %s %d", chunks[0].c_str(), chunks[1].c_str(), strToNum(chunks[2]));
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("NAMES FILE DOESNT EXIST");
+	return false;
+}
+
+bool addPrefixes(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_prefix.txt";
+	SDL_Log("OPENING PREFIX FILE");
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			SDL_Log("LOG LINE %s", line.c_str());
+			std::vector<std::string> chunks = split(line, ',');
+			std::string oldName = chunks.front();
+			chunks.erase(chunks.begin());
+			addPrefix(oldName, chunks);
+			//SDL_Log("ADDING SUFFIX %s %s", chunks[0].c_str(), chunks[1].c_str());
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("PREFIX FILE DOESNT EXIST");
+	return false;
+	//addPrefix("strong", { "silny", "silna" });
+	//addPrefix("awesome", { "swietny", "swietna" });
+}
+
+bool addSuffixes(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_suffix.txt";
+	SDL_Log("OPENING SUFFIX FILE");
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			SDL_Log("LOG LINE %s", line.c_str());
+			std::vector<std::string> chunks = split(line, ',');
+			if (chunks.size() != 2) {
+				SDL_Log("WRONG CHUNKS SIZE");
+				return false;
+			}
+			addSuffix(chunks[0], chunks[1]);
+			SDL_Log("ADDING SUFFIX %s %s", chunks[0].c_str(), chunks[1].c_str());
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("SUFFIX FILE DOESNT EXIST");
+	return false;
+}
+
+bool initTranslation(std::string language)
+{
+	names.clear();
+	prefixes.clear();
+	suffixes.clear();
+	SDL_Log("TRANSLATION STATUS %d %d %d", addNames(language), addPrefixes(language), addSuffixes(language));
+	//addNames(language);
+	//addPrefixes(language);
+	//addSuffixes(language);
+}
+
+const char *translatePrefix(const char *pref, char *itemName)
+{
+	if (translated == false) {
+		translated = true;
+		initTranslation("polish");
+	}
+	std::string tmpName(itemName);
+	std::string tmpPrefix(pref);
+	int gender = names[tmpName].gender;
+	SDL_Log("PREFIX TRANSLATION: %s %s into %s", pref, itemName, prefixes[tmpPrefix][gender].c_str());
+	return prefixes[tmpPrefix][gender].c_str();
+}
+
+const char *translateName(char *itemName)
+{
+	if (translated == false) {
+		translated = true;
+		initTranslation("polish");
+	}
+	std::string tmpName(itemName);
+	if (names.count(tmpName) == 0) {
+		return tmpName.c_str();
+	}
+	return names[tmpName].translatedName.c_str();
+}
+
+const char *translateSuffix(const char *suff)
+{
+	if (translated == false) {
+		translated = true;
+		initTranslation("polish");
+	}
+	std::string tmpSuffix(suff);
+	return suffixes[suff].c_str();
+}
+
 /* data */
 
 BYTE ItemCAnimTbl[169] = {
@@ -1180,7 +1351,8 @@ void GetStaffPower(int i, int lvl, int bs, BOOL onlygood)
 		}
 		if (nl != 0) {
 			preidx = l[random_(16, nl)];
-			sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			//sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			sprintf(istr, "%s %s", translatePrefix(PL_Prefix[preidx].PLName, item[i]._iIName), translateName(item[i]._iIName));
 			strcpy(item[i]._iIName, istr);
 			item[i]._iMagical = ITEM_QUALITY_MAGIC;
 			SaveItemPower(
@@ -1197,7 +1369,8 @@ void GetStaffPower(int i, int lvl, int bs, BOOL onlygood)
 	if (!control_WriteStringToBuffer((BYTE *)item[i]._iIName)) {
 		strcpy(item[i]._iIName, AllItemsList[item[i].IDidx].iSName);
 		if (preidx != -1) {
-			sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			//sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			sprintf(istr, "%s %s", translatePrefix(PL_Prefix[preidx].PLName, item[i]._iIName), translateName(item[i]._iIName));
 			strcpy(item[i]._iIName, istr);
 		}
 		sprintf(istr, "%s of %s", item[i]._iIName, spelldata[bs].sNameText);
@@ -1264,8 +1437,8 @@ void GetItemAttrs(int i, int idata, int lvl)
 
 	item[i]._itype = AllItemsList[idata].itype;
 	item[i]._iCurs = AllItemsList[idata].iCurs;
-	strcpy(item[i]._iName, AllItemsList[idata].iName);
-	strcpy(item[i]._iIName, AllItemsList[idata].iName);
+	strcpy(item[i]._iName, translateName(AllItemsList[idata].iName));
+	strcpy(item[i]._iIName, translateName(AllItemsList[idata].iName));
 	item[i]._iLoc = AllItemsList[idata].iLoc;
 	item[i]._iClass = AllItemsList[idata].iClass;
 	item[i]._iMinDam = AllItemsList[idata].iMinDam;
@@ -1697,7 +1870,8 @@ void GetItemPower(int i, int minlvl, int maxlvl, int flgs, BOOL onlygood)
 		}
 		if (nt) {
 			preidx = l[random_(23, nt)];
-			sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			//sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			sprintf(istr, "%s %s", translatePrefix(PL_Prefix[preidx].PLName, item[i]._iIName), translateName(item[i]._iIName));
 			strcpy(item[i]._iIName, istr);
 			item[i]._iMagical = ITEM_QUALITY_MAGIC;
 			SaveItemPower(
@@ -1725,7 +1899,8 @@ void GetItemPower(int i, int minlvl, int maxlvl, int flgs, BOOL onlygood)
 		}
 		if (nl) {
 			sufidx = l[random_(23, nl)];
-			sprintf(istr, "%s of %s", item[i]._iIName, PL_Suffix[sufidx].PLName);
+			//sprintf(istr, "%s of %s", item[i]._iIName, PL_Suffix[sufidx].PLName);
+			sprintf(istr, "%s %s", translateName(item[i]._iIName), translateSuffix(PL_Suffix[sufidx].PLName));
 			strcpy(item[i]._iIName, istr);
 			item[i]._iMagical = ITEM_QUALITY_MAGIC;
 			SaveItemPower(
@@ -1742,11 +1917,13 @@ void GetItemPower(int i, int minlvl, int maxlvl, int flgs, BOOL onlygood)
 	if (!control_WriteStringToBuffer((BYTE *)item[i]._iIName)) {
 		strcpy(item[i]._iIName, AllItemsList[item[i].IDidx].iSName);
 		if (preidx != -1) {
-			sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			//sprintf(istr, "%s %s", PL_Prefix[preidx].PLName, item[i]._iIName);
+			sprintf(istr, "%s %s", translatePrefix(PL_Prefix[preidx].PLName, item[i]._iIName), translateName(item[i]._iIName));
 			strcpy(item[i]._iIName, istr);
 		}
 		if (sufidx != -1) {
-			sprintf(istr, "%s of %s", item[i]._iIName, PL_Suffix[sufidx].PLName);
+			//sprintf(istr, "%s of %s", item[i]._iIName, PL_Suffix[sufidx].PLName);
+			sprintf(istr, "%s %s", translateName(item[i]._iIName), translateSuffix(PL_Suffix[sufidx].PLName));
 			strcpy(item[i]._iIName, istr);
 		}
 	}
