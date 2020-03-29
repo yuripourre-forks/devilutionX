@@ -953,8 +953,8 @@ void SetPlrHandItem(ItemStruct *h, int idata)
 
 	h->_itype = pAllItem->itype;
 	h->_iCurs = pAllItem->iCurs;
-	strcpy(h->_iName, pAllItem->iName);
-	strcpy(h->_iIName, pAllItem->iName);
+	strcpy(h->_iName, translateName(pAllItem->iName));
+	strcpy(h->_iIName, translateName(pAllItem->iName));
 	h->_iLoc = pAllItem->iLoc;
 	h->_iClass = pAllItem->iClass;
 	h->_iMinDam = pAllItem->iMinDam;
