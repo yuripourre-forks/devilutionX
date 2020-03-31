@@ -1229,12 +1229,14 @@ void PrintInfo()
 		yo = 0;
 		lo = 1;
 		if (infostr[0]) {
+			translateStuff(infostr, 260);
 			CPrintString(0, infostr, TRUE, pnumlines);
 			yo = 1;
 			lo = 0;
 		}
 
 		for (i = 0; i < pnumlines; i++) {
+			translateStuff(panelstr[i], 64);
 			CPrintString(i + yo, panelstr[i], pstrjust[i], pnumlines - lo);
 		}
 	}

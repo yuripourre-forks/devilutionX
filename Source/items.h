@@ -2,6 +2,7 @@
 #ifndef __ITEMS_H__
 #define __ITEMS_H__
 
+void translateStuff(char *s, int size);
 extern int itemactive[MAXITEMS];
 extern BOOL uitemflag;
 extern int itemavail[MAXITEMS];

@@ -14,6 +14,212 @@ BOOL UniqueItemFlag[128];
 int numitems;
 int gnNumGetRecords;
 
+bool translated = false;
+struct translatedName {
+	std::string translatedName;
+	int gender;
+};
+
+std::map<std::string, translatedName> names;
+std::map<std::string, std::vector<std::string>> prefixes;
+std::map<std::string, std::string> suffixes;
+
+std::vector<std::string> split(const std::string &str, char delim)
+{
+	std::vector<std::string> strings;
+	size_t start;
+	size_t end = 0;
+	while ((start = str.find_first_not_of(delim, end)) != std::string::npos) {
+		end = str.find(delim, start);
+		strings.push_back(str.substr(start, end - start));
+	}
+	return strings;
+}
+
+std::string makeLowercase(std::string data)
+{
+	std::transform(data.begin(), data.end(), data.begin(), [](unsigned char c) { return std::tolower(c); });
+	return data;
+}
+
+int strToNum(std::string str)
+{
+	std::istringstream ss(str);
+	int n;
+	ss >> n;
+	return n;
+}
+
+void addName(std::string n, std::string tn, int gender)
+{
+	translatedName tmp;
+	tmp.translatedName = tn;
+	tmp.gender = gender;
+	names[n] = tmp;
+}
+
+void addPrefix(std::string n, std::vector<std::string> prefixNames)
+{
+	prefixes[n] = prefixNames;
+}
+
+void addSuffix(std::string n, std::string suffixName)
+{
+	suffixes[n] = suffixName;
+}
+
+bool addNames(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_names.txt";
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			line = makeLowercase(line);
+			std::vector<std::string> chunks = split(line, ',');
+			if (chunks.size() != 3) {
+				SDL_Log("%s", line.c_str());
+				SDL_Log("WRONG CHUNKS SIZE IN NAMES");
+				return false;
+			}
+			addName(chunks[0], chunks[1], strToNum(chunks[2]));
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("NAMES FILE DOESNT EXIST");
+	return false;
+}
+
+bool addPrefixes(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_prefix.txt";
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			line = makeLowercase(line);
+			std::vector<std::string> chunks = split(line, ',');
+			std::string oldName = chunks.front();
+			chunks.erase(chunks.begin());
+			addPrefix(oldName, chunks);
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("PREFIX FILE DOESNT EXIST");
+	return false;
+}
+
+bool addSuffixes(std::string language)
+{
+	std::stringstream filename;
+	filename << language << "_suffix.txt";
+	std::ifstream myfile(filename.str().c_str(), std::ios::binary);
+	std::string line;
+	if (myfile.is_open()) {
+		while (getline(myfile, line)) {
+			line = makeLowercase(line);
+			std::vector<std::string> chunks = split(line, ',');
+			if (chunks.size() != 2) {
+				SDL_Log("%s", line.c_str());
+				SDL_Log("WRONG CHUNKS SIZE IN SUFFIXES");
+				return false;
+			}
+			addSuffix(chunks[0], chunks[1]);
+		}
+		myfile.close();
+		return true;
+	}
+	SDL_Log("SUFFIX FILE DOESNT EXIST");
+	return false;
+}
+
+bool initTranslation(std::string language)
+{
+	names.clear();
+	prefixes.clear();
+	suffixes.clear();
+	SDL_Log("TRANSLATION STATUS %d %d %d", addNames(language), addPrefixes(language), addSuffixes(language));
+	//addNames(language);
+	//addPrefixes(language);
+	//addSuffixes(language);
+}
+
+void translateStuff(char *s, int size)
+{
+	if (translated == false) {
+		translated = true;
+		initTranslation("polish");
+	}
+	std::string tmp(s);
+	tmp = makeLowercase(tmp);
+	for (std::map<std::string, translatedName>::iterator it = names.begin(); it != names.end(); ++it){
+		if (tmp.rfind(it->first, 0) == 0) {
+			std::string name = it->first;
+			SDL_Log("MATCHED NAME *%s*", name.c_str());
+			int rsize = tmp.size() - name.size() - 1;
+			SDL_Log("REST SIZE: %d", rsize);
+			if (rsize <= 0) {
+				SDL_Log("REST IS EMPTY");
+				strcpy(s, it->second.translatedName.c_str());
+				return;
+			}
+			std::string rest = tmp.substr(name.size() + 1, rsize);
+			for (std::map<std::string, std::string>::iterator it3 = suffixes.begin(); it3 != suffixes.end(); ++it3) {
+				if (rest == it3->first) {
+					std::string suffix = it3->first;
+					SDL_Log("MATCHED SUFFIX *%s*", suffix.c_str());
+					std::string translated = names[name].translatedName + " " + suffixes[suffix];
+					SDL_Log("FULL TRANSLATION FROM *%s* TO *%s*", s, translated.c_str());
+					strcpy(s, translated.c_str());
+					return;
+				}
+			}
+			break;
+		}
+	}
+
+	for (std::map<std::string, std::vector<std::string>>::iterator it = prefixes.begin(); it != prefixes.end(); ++it) {
+		if (tmp.rfind(it->first, 0) == 0) {
+			std::string prefix = it->first;
+			SDL_Log("MATCHED PREFIX *%s*", prefix.c_str());
+			std::string rest = tmp.substr(prefix.size() + 1, tmp.size() - prefix.size() - 1);
+			SDL_Log("REST IS *%s*", rest.c_str());
+			for (std::map<std::string, translatedName>::iterator it2 = names.begin(); it2 != names.end(); ++it2) {
+				if (rest.rfind(it2->first, 0) == 0) {
+					std::string name = it2->first;
+					SDL_Log("MATCHED NAME *%s*", name.c_str());
+					int r2size = rest.size() - name.size() - 1;
+					SDL_Log("REST2 SIZE: %d", r2size);
+					if (r2size < 0) {
+						SDL_Log("REST2 IS EMPTY");
+						std::string translated = prefixes[prefix][names[name].gender] + " " + names[name].translatedName;
+						strcpy(s, translated.c_str());
+						return;
+					}
+					std::string rest2 = rest.substr(name.size() + 1, r2size);
+					SDL_Log("REST2 IS *%s*", rest2.c_str());
+					for (std::map<std::string, std::string>::iterator it3 = suffixes.begin(); it3 != suffixes.end(); ++it3) {
+						if (rest2 == it3->first) {
+							std::string suffix = it3->first;
+							SDL_Log("MATCHED SUFFIX *%s*", suffix.c_str());
+							std::string translated = prefixes[prefix][names[name].gender] + " " + names[name].translatedName + " " + suffixes[suffix];
+							SDL_Log("FULL TRANSLATION FROM *%s* TO *%s*", s, translated.c_str());
+							strcpy(s, translated.c_str());
+							return;
+						}
+					}
+					break;
+				}
+			}
+			break;
+		}
+	}
+}
+
 /* data */
 
 BYTE ItemCAnimTbl[169] = {

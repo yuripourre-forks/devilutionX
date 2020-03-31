@@ -9,6 +9,14 @@
 #include "sdl2_backports.h"
 #endif
 
+#include <string>
+#include <map>
+#include <vector>
+#include <sstream>
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+
 #include "sdl_compat.h"
 
 #include "../types.h"
