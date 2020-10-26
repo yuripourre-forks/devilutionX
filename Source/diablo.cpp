@@ -1288,7 +1288,19 @@ void PressChar(int vkey)
 		difficulties[1] = "Nightmare";
 		difficulties[2] = "Hell";
 		sprintf(pszStr, "%s, mode = %s", gszProductName, difficulties[gnDifficulty]);
-		NetSendCmdString(1 << myplr, pszStr);
+		char sad[169];
+		for (int i = 0; i < nummonsters; i++) {
+			MonsterStruct *mon = &monster[monstactive[i]];
+			if (mon->mlid != 0) {
+				LightListStruct *lid = &LightList[lightactive[mon->mlid]];
+
+				float d = ((float)mon->_mx - (float)lid->_lx) * ((float)mon->_mx - (float)lid->_lx) + ((float)mon->_my - (float)lid->_ly) * ((float)mon->_my - (float)lid->_ly);
+				if (d > 4) {
+					sprintf(sad, "Broken light! %s", mon->mName);
+				}
+			}
+		}
+		NetSendCmdString(1 << myplr, sad);
 		return;
 	case 'V':
 		NetSendCmdString(1 << myplr, gszVersionNumber);
@@ -1668,9 +1680,9 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 		if (leveltype != DTYPE_TOWN) {
 			if (firstflag || lvldir == 4 || !plr[myplr]._pLvlVisited[currlevel] || gbMaxPlayers != 1) {
 				HoldThemeRooms();
-				glMid1Seed[currlevel] = GetRndSeed();
+				//glMid1Seed[currlevel] = GetRndSeed();
 				InitMonsters();
-				glMid2Seed[currlevel] = GetRndSeed();
+				//glMid2Seed[currlevel] = GetRndSeed();
 				IncProgress();
 				InitObjects();
 				InitItems();
@@ -1679,10 +1691,10 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 #endif
 					CreateThemeRooms();
 				IncProgress();
-				glMid3Seed[currlevel] = GetRndSeed();
+				//glMid3Seed[currlevel] = GetRndSeed();
 				InitMissiles();
 				InitDead();
-				glEndSeed[currlevel] = GetRndSeed();
+				//glEndSeed[currlevel] = GetRndSeed();
 
 				if (gbMaxPlayers != 1)
 					DeltaLoadLevel();
@@ -1690,6 +1702,7 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 				IncProgress();
 				SavePreLighting();
 			} else {
+				HoldThemeRooms();
 				InitMonsters();
 				InitMissiles();
 				InitDead();
