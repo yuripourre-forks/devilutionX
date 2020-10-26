@@ -1294,7 +1294,7 @@ void PressChar(int vkey)
 			if (mon->mlid != 0) {
 				LightListStruct *lid = &LightList[lightactive[mon->mlid]];
 
-				float d = ((float)mon->_mx - (float)lid->_lx) * ((float)mon->_mx - (float)lid->_lx) + ((float)mon->_my - (float)lid->_ly) * ((float)mon->_my - (float)lid->_ly);
+				float d = (mon->_mx - lid->_lx) * (mon->_mx - lid->_lx) + (mon->_my - lid->_ly) * (mon->_my - lid->_ly);
 				if (d > 4) {
 					sprintf(sad, "Broken light! %s", mon->mName);
 				}
