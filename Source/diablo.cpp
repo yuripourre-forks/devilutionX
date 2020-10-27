@@ -1292,7 +1292,7 @@ void PressChar(int vkey)
 			MonsterStruct *mon = &monster[monstactive[i]];
 			if (mon->mlid != -1) {
 				LightListStruct *lid = &LightList[lightactive[mon->mlid]];
-				float d = (mon->_mx - lid->_lx) * (mon->_mx - lid->_lx) + (mon->_my - lid->_ly) * (mon->_my - lid->_ly);
+				int d = (mon->_mx - lid->_lx) * (mon->_mx - lid->_lx) + (mon->_my - lid->_ly) * (mon->_my - lid->_ly);
 				if (d > 4) {
 					SDL_Log("Broken light! %s %d %d %d %d %d %d %d", mon->mName, mon->_uniqtype, mon->_mx, mon->_my, lid->_lx, lid->_ly, mon->mlid, i);
 				}
