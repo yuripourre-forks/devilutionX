@@ -1583,6 +1583,18 @@ void CreateLevel(int lvldir)
 	}
 }
 
+void UpdateMonsterLights()
+{
+	for (int i = 0; i < nummonsters; i++) {
+		MonsterStruct *mon = &monster[monstactive[i]];
+		if (mon->mlid != -1) {
+			LightListStruct *lid = &LightList[lightactive[mon->mlid]];
+			lid->_lx = mon->_mx;
+			lid->_ly = mon->_my;
+		}
+	}
+}
+
 void LoadGameLevel(BOOL firstflag, int lvldir)
 {
 	int i, j;
@@ -1829,6 +1841,7 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 
 	if (gbIsSpawn && setlevel && setlvlnum == SL_SKELKING && quests[Q_SKELKING]._qactive == QUEST_ACTIVE)
 		PlaySFX(USFX_SKING1);
+	UpdateMonsterLights();
 }
 
 void game_loop(BOOL bStartup)
