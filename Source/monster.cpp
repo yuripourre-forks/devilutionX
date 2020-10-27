@@ -523,6 +523,7 @@ void InitMonster(int i, int rd, int mtype, int x, int y)
 #ifdef HELLFIRE
 	monster[i].mlid = 0;
 #endif
+	monster[i].mlid = -1;
 	monster[i]._mRndSeed = GetRndSeed();
 	monster[i]._mAISeed = GetRndSeed();
 	monster[i].mWhoHit = 0;

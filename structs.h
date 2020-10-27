@@ -623,7 +623,7 @@ typedef struct MonsterStruct { // note: missing field _mAFNum
 	unsigned char leader;
 	unsigned char leaderflag;
 	unsigned char packsize;
-	unsigned char mlid;
+	char mlid;
 	const char *mName;
 	CMonster *MType;
 	MonsterData *MData;

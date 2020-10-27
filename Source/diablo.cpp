@@ -1288,19 +1288,17 @@ void PressChar(int vkey)
 		difficulties[1] = "Nightmare";
 		difficulties[2] = "Hell";
 		sprintf(pszStr, "%s, mode = %s", gszProductName, difficulties[gnDifficulty]);
-		char sad[169];
 		for (int i = 0; i < nummonsters; i++) {
 			MonsterStruct *mon = &monster[monstactive[i]];
-			if (mon->mlid != 0) {
+			if (mon->mlid != -1) {
 				LightListStruct *lid = &LightList[lightactive[mon->mlid]];
-
 				float d = (mon->_mx - lid->_lx) * (mon->_mx - lid->_lx) + (mon->_my - lid->_ly) * (mon->_my - lid->_ly);
 				if (d > 4) {
-					sprintf(sad, "Broken light! %s", mon->mName);
+					SDL_Log("Broken light! %s %d %d %d %d %d %d %d", mon->mName, mon->_uniqtype, mon->_mx, mon->_my, lid->_lx, lid->_ly, mon->mlid, i);
 				}
 			}
 		}
-		NetSendCmdString(1 << myplr, sad);
+		NetSendCmdString(1 << myplr, pszStr);
 		return;
 	case 'V':
 		NetSendCmdString(1 << myplr, gszVersionNumber);
