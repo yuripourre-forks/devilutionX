@@ -1589,8 +1589,11 @@ void UpdateMonsterLights()
 		MonsterStruct *mon = &monster[monstactive[i]];
 		if (mon->mlid != -1) {
 			LightListStruct *lid = &LightList[lightactive[mon->mlid]];
-			lid->_lx = mon->_mx;
-			lid->_ly = mon->_my;
+			if (mon->_mx != lid->_lx || mon->_my != lid->_ly){
+				DoUnLight(lid->_lx, lid->_ly, lid->_lradius);
+				lid->_lx = mon->_mx;
+				lid->_ly = mon->_my;
+			}
 		}
 	}
 }
@@ -1808,6 +1811,7 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 		InitControlPan();
 	}
 	IncProgress();
+	UpdateMonsterLights();
 	if (leveltype != DTYPE_TOWN) {
 		ProcessLightList();
 		ProcessVisionList();
@@ -1841,7 +1845,6 @@ void LoadGameLevel(BOOL firstflag, int lvldir)
 
 	if (gbIsSpawn && setlevel && setlvlnum == SL_SKELKING && quests[Q_SKELKING]._qactive == QUEST_ACTIVE)
 		PlaySFX(USFX_SKING1);
-	UpdateMonsterLights();
 }
 
 void game_loop(BOOL bStartup)
