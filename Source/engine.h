@@ -32,6 +32,7 @@ extern int orgseed;
 extern int SeedCount;
 /** valid - if x/y are in bounds */
 extern BOOL gbNotInView;
+extern int sglGameSeed;
 
 inline BYTE *CelGetFrameStart(BYTE *pCelBuff, int nCel)
 {
